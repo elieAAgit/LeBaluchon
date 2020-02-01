@@ -16,6 +16,7 @@
 		0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41F723E34AC10077D6E1 /* SalientButton.swift */; };
 		0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */; };
 		0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41FB23E35CD60077D6E1 /* UIButton.swift */; };
+		0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420123E57E530077D6E1 /* TranslationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		0D0D41F723E34AC10077D6E1 /* SalientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalientButton.swift; sourceTree = "<group>"; };
 		0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		0D0D41FB23E35CD60077D6E1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		0D0D420123E57E530077D6E1 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
+				0D0D420123E57E530077D6E1 /* TranslationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
+				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
