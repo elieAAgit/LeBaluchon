@@ -17,6 +17,9 @@
 		0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */; };
 		0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41FB23E35CD60077D6E1 /* UIButton.swift */; };
 		0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420123E57E530077D6E1 /* TranslationViewController.swift */; };
+		0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420723E779BF0077D6E1 /* Currency.swift */; };
+		0D0D420A23E779EF0077D6E1 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420923E779EF0077D6E1 /* CurrencyService.swift */; };
+		0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		0D0D41FB23E35CD60077D6E1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		0D0D420123E57E530077D6E1 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		0D0D420723E779BF0077D6E1 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		0D0D420923E779EF0077D6E1 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageArrays.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		0D0D41F323E31E450077D6E1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0D0D420623E779A50077D6E1 /* Currency */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +153,16 @@
 				0D0D41FB23E35CD60077D6E1 /* UIButton.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		0D0D420623E779A50077D6E1 /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */,
+				0D0D420723E779BF0077D6E1 /* Currency.swift */,
+				0D0D420923E779EF0077D6E1 /* CurrencyService.swift */,
+			);
+			path = Currency;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +270,10 @@
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
+				0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */,
+				0D0D420A23E779EF0077D6E1 /* CurrencyService.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
+				0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
