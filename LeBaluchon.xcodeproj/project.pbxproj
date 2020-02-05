@@ -20,6 +20,8 @@
 		0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420723E779BF0077D6E1 /* Currency.swift */; };
 		0D0D420A23E779EF0077D6E1 /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420923E779EF0077D6E1 /* CurrencyService.swift */; };
 		0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */; };
+		0D0D421023E98F440077D6E1 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420F23E98F440077D6E1 /* Change.swift */; };
+		0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		0D0D420723E779BF0077D6E1 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		0D0D420923E779EF0077D6E1 /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageArrays.swift; sourceTree = "<group>"; };
+		0D0D420F23E98F440077D6E1 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
+		0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */,
 				0D0D420723E779BF0077D6E1 /* Currency.swift */,
 				0D0D420923E779EF0077D6E1 /* CurrencyService.swift */,
+				0D0D420F23E98F440077D6E1 /* Change.swift */,
+				0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
+				0D0D421023E98F440077D6E1 /* Change.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
+				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
 				0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */,

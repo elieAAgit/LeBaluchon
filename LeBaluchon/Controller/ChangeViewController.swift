@@ -9,11 +9,26 @@
 import UIKit
 
 class ChangeViewController: UIViewController {
+    var changeCurrency = ChangeCurrency()
+
+    @IBOutlet weak var currencyToConvert: UILabel!
+    @IBOutlet weak var currencyConverted: UILabel!
+    @IBOutlet weak var currencyOne: UIButton!
+    @IBOutlet weak var currencyTwo: UIButton!
+    
+    var moneyOne = ""
+    var moneyTwo = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        changeCurrency.delegate = self
+
+        currencyChange()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        moneyChoice()
     }
 }
 
@@ -25,5 +40,42 @@ extension ChangeViewController {
                 // Alert
             }
         }
+    }
+
+    private func moneyChoice() {
+        moneyOne = currencyOne.title(for: .normal) ?? "EUR"
+        moneyTwo = currencyTwo.title(for: .normal) ?? "USD"
+    }
+}
+
+// MARK: - User actions
+extension ChangeViewController {
+    @IBAction func tappedNumberButtons(_ sender: UIButton) {
+        sender.animated()
+
+        guard let toConvert = sender.currentTitle else {  return }
+
+        changeCurrency.changeCurrency(toConvert: toConvert, currencyOne: moneyOne, currencyTwo: moneyTwo)
+    }
+
+    @IBAction func clear(_ sender: UIButton) {
+        sender.animated()
+
+        clearAll()
+    }
+
+    func clearAll() {
+        changeCurrency.clear()
+
+        currencyToConvert.text = "0"
+        currencyConverted.text = "0"
+    }
+}
+
+// MARK: - Display currencies in View
+extension ChangeViewController: ChangeDelegate {
+    func displayCurrencies() {
+        self.currencyToConvert.text = changeCurrency.currencyToConvert
+        self.currencyConverted.text = changeCurrency.currencyConverted
     }
 }

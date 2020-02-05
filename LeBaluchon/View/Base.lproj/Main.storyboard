@@ -212,7 +212,7 @@ Language to translate View</string>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGp-Ig-ZIO" userLabel="Currency To Convert">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177.5" height="101.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <state key="normal" title="Eur">
+                                                                <state key="normal" title="EUR">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                             </button>
@@ -244,7 +244,7 @@ Language to translate View</string>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ym-lk-O3L" userLabel="Converted Currency">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177.5" height="102"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <state key="normal" title="Dol">
+                                                                <state key="normal" title="USD">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                             </button>
@@ -283,6 +283,9 @@ Language to translate View</string>
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="80g-pc-BJT"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbP-A9-Ej5">
                                                         <rect key="frame" x="126.5" y="0.0" width="122" height="99.5"/>
@@ -290,6 +293,9 @@ Language to translate View</string>
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="4pO-8d-CeW"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gw6-kc-pE1">
                                                         <rect key="frame" x="252.5" y="0.0" width="122.5" height="99.5"/>
@@ -297,6 +303,9 @@ Language to translate View</string>
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="E2v-Xe-xaG"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -309,6 +318,9 @@ Language to translate View</string>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="fZd-vb-zWB"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1N-66-3On">
                                                         <rect key="frame" x="126.5" y="0.0" width="122" height="99.5"/>
@@ -316,6 +328,9 @@ Language to translate View</string>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="zwX-CG-zye"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZI-Jt-TpU">
                                                         <rect key="frame" x="252.5" y="0.0" width="122.5" height="99.5"/>
@@ -323,6 +338,9 @@ Language to translate View</string>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="lDq-9x-8tu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -340,6 +358,9 @@ Language to translate View</string>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="3oV-zg-RL3"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6D-p3-tDK">
                                                         <rect key="frame" x="126.5" y="0.0" width="122" height="100"/>
@@ -347,6 +368,9 @@ Language to translate View</string>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="B7S-9n-cWS"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pme-cL-fMO">
                                                         <rect key="frame" x="252.5" y="0.0" width="122.5" height="100"/>
@@ -354,6 +378,9 @@ Language to translate View</string>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="NWW-91-6af"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -367,6 +394,9 @@ Language to translate View</string>
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="lUd-nG-bVa"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE3-lT-Igp">
                                                         <rect key="frame" x="126.5" y="0.0" width="122" height="99.5"/>
@@ -374,6 +404,9 @@ Language to translate View</string>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tappedNumberButtons:" destination="2TK-Th-vcE" eventType="touchUpInside" id="OHK-Bf-h9u"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbr-f4-cuZ" userLabel="Clear">
                                                         <rect key="frame" x="252.5" y="0.0" width="122.5" height="99.5"/>
@@ -382,6 +415,9 @@ Language to translate View</string>
                                                         <state key="normal" image="arrow.counterclockwise" catalog="system">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="clear:" destination="2TK-Th-vcE" eventType="touchUpInside" id="AJr-gv-Lym"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -412,6 +448,12 @@ Language to translate View</string>
                         <viewLayoutGuide key="safeArea" id="wuD-8d-dif"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="uru-ZM-aCT"/>
+                    <connections>
+                        <outlet property="currencyConverted" destination="v9C-M5-cHc" id="GOk-1Q-8ih"/>
+                        <outlet property="currencyOne" destination="UGp-Ig-ZIO" id="6aw-ta-CKz"/>
+                        <outlet property="currencyToConvert" destination="Jkb-Pj-GAY" id="bC5-IM-imj"/>
+                        <outlet property="currencyTwo" destination="6Ym-lk-O3L" id="jkF-jB-Vrl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9W-Fm-lqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
