@@ -33,10 +33,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mFF-tQ-68D" userLabel="Translation Stack View">
-                                <rect key="frame" x="16" y="20" width="343" height="598"/>
+                                <rect key="frame" x="16" y="20" width="343" height="578"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iX-od-qtD">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="294"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="284"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTb-nY-Jp5" userLabel="Top View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -45,7 +45,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Francais">
+                                                        <state key="normal" title="Français">
                                                             <color key="titleColor" red="0.94166409969999998" green="0.59275311230000005" blue="0.254680723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <string key="userLabel">
@@ -86,11 +86,11 @@ Language to translate</string>
                                                     <constraint firstItem="f1S-7q-vLp" firstAttribute="leading" secondItem="3St-yO-5Nl" secondAttribute="trailing" constant="1" id="w5B-4P-TzB"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpA-JX-wnz" userLabel="Language To Translate Text Field">
-                                                <rect key="frame" x="0.0" y="48" width="343" height="246"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpA-JX-wnz" userLabel="Language To Translate Text Field">
+                                                <rect key="frame" x="0.0" y="48" width="343" height="236"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -106,7 +106,7 @@ Language to translate</string>
 Language to translate View</string>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7u-xN-wWp" userLabel="Language Translated View">
-                                        <rect key="frame" x="0.0" y="304" width="343" height="294"/>
+                                        <rect key="frame" x="0.0" y="294" width="343" height="284"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwT-K4-Yh6" userLabel="Top View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
@@ -153,7 +153,7 @@ Language to translate View</string>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk9-Uu-DG8" userLabel="Language Translated Text View">
-                                                <rect key="frame" x="0.0" y="48" width="343" height="246"/>
+                                                <rect key="frame" x="0.0" y="48" width="343" height="236"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -175,17 +175,33 @@ Language to translate View</string>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.94501525159999999" green="0.94515103099999997" blue="0.94498568770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="mFF-tQ-68D" firstAttribute="bottom" secondItem="TTb-Va-LYZ" secondAttribute="bottom" id="2dh-Ao-bOl"/>
+                            <constraint firstItem="TTb-Va-LYZ" firstAttribute="bottom" secondItem="mFF-tQ-68D" secondAttribute="bottom" constant="20" id="48w-EY-7Bq"/>
                             <constraint firstItem="mFF-tQ-68D" firstAttribute="top" secondItem="TTb-Va-LYZ" secondAttribute="top" constant="20" id="KT5-rA-972"/>
                             <constraint firstItem="TTb-Va-LYZ" firstAttribute="trailing" secondItem="mFF-tQ-68D" secondAttribute="trailing" constant="16" id="MXO-Ov-k7P"/>
                             <constraint firstItem="mFF-tQ-68D" firstAttribute="leading" secondItem="TTb-Va-LYZ" secondAttribute="leading" constant="16" id="gUT-wa-tmV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TTb-Va-LYZ"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="NFf-eb-2KU" appends="YES" id="OLc-gl-W0T"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="tFO-KR-7sj"/>
+                    <connections>
+                        <outlet property="bottomMainStackConstraint" destination="48w-EY-7Bq" id="y58-Z5-MoB"/>
+                        <outlet property="languageToTranslateTtextField" destination="ZpA-JX-wnz" id="doM-ib-6Ub"/>
+                        <outlet property="languageTraductedTextView" destination="wk9-Uu-DG8" id="hqd-lB-eRW"/>
+                        <outlet property="topMainStackConstraint" destination="KT5-rA-972" id="kqt-97-UcZ"/>
+                        <outlet property="translationMainStackView" destination="mFF-tQ-68D" id="m1P-CM-I6s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCo-OM-83n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NFf-eb-2KU">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="3EY-bm-wjX" id="hfj-ml-vAs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="301.60000000000002" y="-791.15442278860576"/>
         </scene>
