@@ -9,6 +9,8 @@
 import UIKit
 
 class TranslationViewController: UIViewController {
+    @IBOutlet weak var languageToTranslate: UIButton!
+    @IBOutlet weak var translatedLanguage: UIButton!
     @IBOutlet weak var languageToTranslateTtextField: UITextField!
     @IBOutlet weak var languageTraductedTextView: UITextView!
     
@@ -18,6 +20,8 @@ class TranslationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        loadingLanguages()
 
         languageToTranslateTtextField.delegate = self
 
@@ -35,8 +39,43 @@ class TranslationViewController: UIViewController {
     }
 }
 
+extension TranslationViewController {
+    private func loadingLanguages() {
+        LanguageService.shared.getLanguage { (success) in
+            if !success {
+                // Alert
+            }
+        }
+    }
+}
+
 // MARK: - Keyboard control
 extension TranslationViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        translate()
+    }
+
+    private func translate() {
+        let languageOne = languageToTranslate.title(for: .normal) ?? "Français"
+        let languageTwo = translatedLanguage.title(for: .normal) ?? "Anglais"
+        
+        guard let languageForTraduct = languageToTranslateTtextField.text else {  return }
+
+        guard let source = LanguageStorage.languageValue[languageOne] else { return }
+
+        guard let target = LanguageStorage.languageValue[languageTwo] else { return }
+
+        LanguageService.shared.translate(source: source, target: target, text: languageForTraduct)
+
+        LanguageService.shared.getTranslate { (success, translate) in
+            if success, let translate = translate {
+                self.languageTraductedTextView.text = translate.data.translations[0].translatedText
+            } else {
+                // Alert
+            }
+        }
+    }
+
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         hideKeyboard()
     }

@@ -111,7 +111,7 @@ Language to translate View</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwT-K4-Yh6" userLabel="Top View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-jW-Hc4" userLabel="Language Translated">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-jW-Hc4" userLabel="Translated Language">
                                                         <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -190,9 +190,11 @@ Language to translate View</string>
                     <tabBarItem key="tabBarItem" title="Item" id="tFO-KR-7sj"/>
                     <connections>
                         <outlet property="bottomMainStackConstraint" destination="48w-EY-7Bq" id="y58-Z5-MoB"/>
+                        <outlet property="languageToTranslate" destination="3St-yO-5Nl" id="k8R-UG-5ps"/>
                         <outlet property="languageToTranslateTtextField" destination="ZpA-JX-wnz" id="doM-ib-6Ub"/>
                         <outlet property="languageTraductedTextView" destination="wk9-Uu-DG8" id="hqd-lB-eRW"/>
                         <outlet property="topMainStackConstraint" destination="KT5-rA-972" id="kqt-97-UcZ"/>
+                        <outlet property="translatedLanguage" destination="BrQ-jW-Hc4" id="k4e-lI-UJV"/>
                         <outlet property="translationMainStackView" destination="mFF-tQ-68D" id="m1P-CM-I6s"/>
                     </connections>
                 </viewController>

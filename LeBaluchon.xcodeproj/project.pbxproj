@@ -22,6 +22,9 @@
 		0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */; };
 		0D0D421023E98F440077D6E1 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420F23E98F440077D6E1 /* Change.swift */; };
 		0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */; };
+		0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C723ECBE8000F33A93 /* TranslationService.swift */; };
+		0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */; };
+		0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999CB23ECBFB600F33A93 /* LanguageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageArrays.swift; sourceTree = "<group>"; };
 		0D0D420F23E98F440077D6E1 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
 		0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDelegate.swift; sourceTree = "<group>"; };
+		0D4999C723ECBE8000F33A93 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStorage.swift; sourceTree = "<group>"; };
+		0D4999CB23ECBFB600F33A93 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +132,8 @@
 		0D0D41F123E31DF70077D6E1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
 				0D0D420123E57E530077D6E1 /* TranslationViewController.swift */,
+				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +152,7 @@
 		0D0D41F323E31E450077D6E1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0D4999C623ECBE5700F33A93 /* Translation */,
 				0D0D420623E779A50077D6E1 /* Currency */,
 			);
 			path = Model;
@@ -169,6 +176,16 @@
 				0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */,
 			);
 			path = Currency;
+			sourceTree = "<group>";
+		};
+		0D4999C623ECBE5700F33A93 /* Translation */ = {
+			isa = PBXGroup;
+			children = (
+				0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */,
+				0D4999C723ECBE8000F33A93 /* TranslationService.swift */,
+				0D4999CB23ECBFB600F33A93 /* LanguageService.swift */,
+			);
+			path = Translation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +292,7 @@
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
 				0D0D421023E98F440077D6E1 /* Change.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
+				0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */,
 				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
@@ -282,7 +300,9 @@
 				0D0D420A23E779EF0077D6E1 /* CurrencyService.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
 				0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */,
+				0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
+				0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
