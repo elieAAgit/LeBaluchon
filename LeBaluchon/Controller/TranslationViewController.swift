@@ -41,7 +41,7 @@ class TranslationViewController: UIViewController {
 
 extension TranslationViewController {
     private func loadingLanguages() {
-        LanguageService.shared.getLanguage { (success) in
+        ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
             if !success {
                 // Alert
             }
@@ -67,8 +67,8 @@ extension TranslationViewController: UITextFieldDelegate {
 
         LanguageService.shared.translate(source: source, target: target, text: languageForTraduct)
 
-        LanguageService.shared.getTranslate { (success, translate) in
-            if success, let translate = translate {
+        ApiService.shared.getApiResponse(apiUrl: .translateUrl) { (success, translate) in
+            if success, let translate = translate as? Translate {
                 self.languageTraductedTextView.text = translate.data.translations[0].translatedText
             } else {
                 // Alert

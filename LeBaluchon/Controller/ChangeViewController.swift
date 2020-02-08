@@ -35,8 +35,8 @@ class ChangeViewController: UIViewController {
 // MARK: - Currency
 extension ChangeViewController {
     private func currencyChange() {
-        CurrencyService.shared.getCurrency { (succes) in
-            if !succes {
+        ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
+            if !success {
                 // Alert
             }
         }
