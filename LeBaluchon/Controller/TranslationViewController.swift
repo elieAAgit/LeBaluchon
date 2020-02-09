@@ -9,6 +9,8 @@
 import UIKit
 
 class TranslationViewController: UIViewController {
+    var language = LanguageService()
+
     @IBOutlet weak var languageToTranslate: UIButton!
     @IBOutlet weak var translatedLanguage: UIButton!
     @IBOutlet weak var languageToTranslateTtextField: UITextField!
@@ -65,7 +67,7 @@ extension TranslationViewController: UITextFieldDelegate {
 
         guard let target = LanguageStorage.languageValue[languageTwo] else { return }
 
-        LanguageService.shared.translate(source: source, target: target, text: languageForTraduct)
+        language.translate(source: source, target: target, text: languageForTraduct)
 
         ApiService.shared.getApiResponse(apiUrl: .translateUrl) { (success, translate) in
             if success, let translate = translate as? Translate {

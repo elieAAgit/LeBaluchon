@@ -26,6 +26,7 @@
 		0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999CB23ECBFB600F33A93 /* LanguageService.swift */; };
 		0D608EAE23EF3691008E68C9 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAD23EF3691008E68C9 /* ApiKeys.swift */; };
 		0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAF23EF37DD008E68C9 /* ApiService.swift */; };
+		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		0D4999CB23ECBFB600F33A93 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		0D608EAD23EF3691008E68C9 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		0D608EAF23EF37DD008E68C9 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				0D0D420123E57E530077D6E1 /* TranslationViewController.swift */,
 				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
+				0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
 				0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */,
 				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
+				0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,

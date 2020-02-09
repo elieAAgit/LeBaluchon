@@ -48,18 +48,18 @@ class ApiService {
 
     //
     private func apiChoice(apiUrl: ApiUrl) -> String {
-        var keyChoice = ""
+        var apiChoice = ""
 
         switch apiUrl {
             case .currencyUrl:
-                keyChoice = ApiKeys.currencyUrl
+                apiChoice = ApiKeys.currencyUrl
             case .translateUrl:
-                keyChoice = ApiKeys.translateUrl
+                apiChoice = ApiKeys.translateUrl
             case .languagesUrl:
-            keyChoice = ApiKeys.languagesUrl
+                apiChoice = ApiKeys.languagesUrl
         }
 
-        return keyChoice
+        return apiChoice
     }
 
     //
@@ -69,6 +69,7 @@ class ApiService {
         //
         var method: String {
             var assign: String
+
             switch apiUrl {
                 case .translateUrl, .currencyUrl:
                     assign = Method.post.rawValue
