@@ -11,6 +11,10 @@ import UIKit
 class TranslationViewController: UIViewController {
     var language = LanguageService()
 
+    // properties use for translation and swap
+    var source = ""
+    var target = ""
+
     @IBOutlet weak var languageToTranslate: UIButton!
     @IBOutlet weak var translatedLanguage: UIButton!
     @IBOutlet weak var languageToTranslateTtextField: UITextField!
@@ -39,6 +43,10 @@ class TranslationViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        currencyChoice()
+    }
 }
 
 extension TranslationViewController {
@@ -49,6 +57,11 @@ extension TranslationViewController {
             }
         }
     }
+
+    private func currencyChoice() {
+        source = languageToTranslate.title(for: .normal) ?? "Français"
+        target = translatedLanguage.title(for: .normal) ?? "Anglais"
+    }
 }
 
 // MARK: - Keyboard control
@@ -58,14 +71,7 @@ extension TranslationViewController: UITextFieldDelegate {
     }
 
     private func translate() {
-        let languageOne = languageToTranslate.title(for: .normal) ?? "Français"
-        let languageTwo = translatedLanguage.title(for: .normal) ?? "Anglais"
-        
         guard let languageForTraduct = languageToTranslateTtextField.text else {  return }
-
-        guard let source = LanguageStorage.languageValue[languageOne] else { return }
-
-        guard let target = LanguageStorage.languageValue[languageTwo] else { return }
 
         language.translate(source: source, target: target, text: languageForTraduct)
 
@@ -116,5 +122,39 @@ extension TranslationViewController {
                 self.translationMainStackView.layoutIfNeeded()
             }
         }
+    }
+}
+
+// MARK: - Swap and clear actions
+extension TranslationViewController {
+    @IBAction func swap(_ sender: UIButton) {
+        let translatedtextStorage = languageTraductedTextView.text
+
+        if source == languageToTranslate.title(for: .normal) && target == translatedLanguage.title(for: .normal) {
+            languageToTranslate.setTitle(target, for: .normal)
+            translatedLanguage.setTitle(source, for: .normal)
+            
+        } else {
+            languageToTranslate.setTitle(source, for: .normal)
+            translatedLanguage.setTitle(target, for: .normal)
+        }
+
+        source = languageToTranslate.currentTitle!
+        target = translatedLanguage.currentTitle!
+
+        languageToTranslateTtextField.text = translatedtextStorage
+
+        translate()
+    }
+
+    @IBAction func clear(_ sender: UIButton) {
+        sender.animated()
+
+        clearAllTextField()
+    }
+
+    private func clearAllTextField() {
+        languageToTranslateTtextField.text = ""
+        languageTraductedTextView.text = ""
     }
 }

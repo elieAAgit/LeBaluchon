@@ -10,6 +10,10 @@ import Foundation
 
 class LanguageService {
     func translate(source: String, target: String, text: String) {
+        guard let source = LanguageStorage.languageValue[source] else { return }
+
+        guard let target = LanguageStorage.languageValue[target] else { return }
+
         ApiKeys.parameters = "&source=\(source)&target=\(target)&q=\(text)"
     }
 }

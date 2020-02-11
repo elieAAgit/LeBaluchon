@@ -9,20 +9,20 @@
 import UIKit
 
 class ChangeViewController: UIViewController {
-    var changeCurrency = ChangeCurrency()
+    var change = Change()
 
     @IBOutlet weak var currencyToConvert: UILabel!
     @IBOutlet weak var currencyConverted: UILabel!
     @IBOutlet weak var currencyOne: UIButton!
     @IBOutlet weak var currencyTwo: UIButton!
     
-    var moneyOne = ""
-    var moneyTwo = ""
+    var source = ""
+    var target = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        changeCurrency.delegate = self
+        change.delegate = self
 
         currencyChange()
     }
@@ -43,8 +43,8 @@ extension ChangeViewController {
     }
 
     private func moneyChoice() {
-        moneyOne = currencyOne.title(for: .normal) ?? "EUR"
-        moneyTwo = currencyTwo.title(for: .normal) ?? "USD"
+        source = currencyOne.title(for: .normal) ?? "EUR"
+        target = currencyTwo.title(for: .normal) ?? "USD"
     }
 }
 
@@ -55,7 +55,32 @@ extension ChangeViewController {
 
         guard let toConvert = sender.currentTitle else {  return }
 
-        changeCurrency.changeCurrency(toConvert: toConvert, currencyOne: moneyOne, currencyTwo: moneyTwo)
+        change.changeCurrency(toConvert: toConvert, currencyOne: source, currencyTwo: target)
+    }
+
+    @IBAction func swap(_ sender: UIButton) {
+            sender.animated()
+            
+            let toConvert: String!
+
+            if source == currencyOne.title(for: .normal) && target == currencyTwo.title(for: .normal) {
+                toConvert = currencyConverted.text
+
+                currencyOne.setTitle(target, for: .normal)
+                currencyTwo.setTitle(source, for: .normal)
+                } else {
+                toConvert = currencyToConvert.text
+
+                currencyOne.setTitle(source, for: .normal)
+                currencyTwo.setTitle(target, for: .normal)
+            }
+
+            source = currencyOne.currentTitle!
+            target = currencyTwo.currentTitle!
+
+            clearAll()
+            change.changeCurrency(toConvert: toConvert, currencyOne: source, currencyTwo: target)
+            change.clear()
     }
 
     @IBAction func clear(_ sender: UIButton) {
@@ -65,7 +90,7 @@ extension ChangeViewController {
     }
 
     func clearAll() {
-        changeCurrency.clear()
+        change.clear()
 
         currencyToConvert.text = "0"
         currencyConverted.text = "0"
@@ -75,7 +100,7 @@ extension ChangeViewController {
 // MARK: - Display currencies in View
 extension ChangeViewController: ChangeDelegate {
     func displayCurrencies() {
-        self.currencyToConvert.text = changeCurrency.currencyToConvert
-        self.currencyConverted.text = changeCurrency.currencyConverted
+        self.currencyToConvert.text = change.currencyToConvert
+        self.currencyConverted.text = change.currencyConverted
     }
 }

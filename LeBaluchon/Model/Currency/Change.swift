@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChangeCurrency {
+class Change {
     var delegate: ChangeDelegate?
     var currencyToConvert = ""
     var currencyConverted = ""

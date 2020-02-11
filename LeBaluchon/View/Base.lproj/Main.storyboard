@@ -350,6 +350,9 @@ Language to translate</string>
                                                         <state key="normal" image="arrow.counterclockwise" catalog="system">
                                                             <color key="titleColor" red="0.94166409969999998" green="0.59275311230000005" blue="0.254680723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="clear:" destination="3EY-bm-wjX" eventType="touchUpInside" id="upM-eD-m4r"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -416,6 +419,9 @@ Language to translate View</string>
                                                         </constraints>
                                                         <color key="tintColor" red="0.95761328940000001" green="0.71393847470000005" blue="0.29295998810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="arrow.up.arrow.down" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="swap:" destination="3EY-bm-wjX" eventType="touchUpInside" id="Yac-Yj-Qez"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -732,6 +738,9 @@ Language to translate View</string>
                                 </constraints>
                                 <color key="tintColor" red="0.2983590364" green="0.69083833689999996" blue="0.96949654819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="arrow.up.arrow.down" catalog="system"/>
+                                <connections>
+                                    <action selector="swap:" destination="2TK-Th-vcE" eventType="touchUpInside" id="HJF-eU-UHm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94501525159999999" green="0.94515103099999997" blue="0.94498568770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
