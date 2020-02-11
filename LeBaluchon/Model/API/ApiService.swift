@@ -9,7 +9,7 @@
 import Foundation
 
 class ApiService {
-    //
+    /// Singleton pattern
     static var shared = ApiService()
     private init() {}
 
@@ -57,6 +57,10 @@ class ApiService {
                 apiChoice = ApiKeys.translateUrl
             case .languagesUrl:
                 apiChoice = ApiKeys.languagesUrl
+            case .weatherSingleIdUrl:
+                apiChoice = ApiKeys.weatherSingleIdUrl
+            case .weatherMultipleIdUrl:
+                apiChoice = ApiKeys.weatherMultipleIdUrl
         }
 
         return apiChoice
@@ -73,7 +77,7 @@ class ApiService {
             switch apiUrl {
                 case .translateUrl, .currencyUrl:
                     assign = Method.post.rawValue
-                case .languagesUrl:
+            case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl:
                     assign = Method.get.rawValue
             }
             
@@ -126,6 +130,24 @@ class ApiService {
 
             CurrencyStorage.currencies = responseJSON.rates
             callback(true, nil)
+        //
+        } else if apiUrl == ApiUrl.weatherSingleIdUrl {
+            guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
+                callback(false, nil)
+                print("erreur")
+                return
+            }
+
+            callback(true, responseJSON)
+        //
+        } else if apiUrl == ApiUrl.weatherMultipleIdUrl {
+            guard let responseJSON = try? JSONDecoder().decode(WeatherMultiple.self, from: data) else {
+                callback(false, nil)
+                print("erreur")
+                return
+            }
+
+            callback(true, responseJSON)
         }
     }
 }

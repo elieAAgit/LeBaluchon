@@ -14,7 +14,7 @@ enum Method: String {
 }
 
 enum ApiUrl {
-    case translateUrl, languagesUrl, currencyUrl
+    case translateUrl, languagesUrl, currencyUrl, weatherSingleIdUrl, weatherMultipleIdUrl
 }
 
 //MARK: - Translation
@@ -41,5 +41,24 @@ extension ApiKeys {
     //
     static var currencyUrl: String {
         return currencyBase + currencyKey
+    }
+}
+
+// MARK: - Weather
+extension ApiKeys {
+    static private let weatherBase = "http://api.openweathermap.org/data/2.5/"
+    static private let weatherKey = "&APPID="
+    static private let weatherLanguage = "&lang=fr"
+    static private let unit = "&units=metric"
+    static var weatherSingleIdParameters = "weather?id="
+    // ?? = Paris, 5128581 = New-York
+    static var weatherMultipleIdParameters = "group?id=5128581,5128581"
+    //
+    static var weatherSingleIdUrl: String {
+        return weatherBase + weatherSingleIdParameters + weatherKey + weatherLanguage + unit
+    }
+    //
+    static var weatherMultipleIdUrl: String {
+        return weatherBase + weatherMultipleIdParameters + weatherKey + weatherLanguage + unit
     }
 }

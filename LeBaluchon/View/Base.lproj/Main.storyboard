@@ -22,20 +22,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YDf-2K-aLz" userLabel="First City View">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="279"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-sY-aIp">
-                                                <rect key="frame" x="10" y="20" width="313" height="41"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Paris">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZL3-I4-orr">
-                                                <rect key="frame" x="150" y="-0.5" width="193" height="193.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="ZL3-I4-orr">
+                                                <rect key="frame" x="150" y="0.0" width="193" height="193"/>
                                                 <color key="tintColor" red="0.95761328940000001" green="0.71393847470000005" blue="0.29295998810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZL3-I4-orr" secondAttribute="height" multiplier="1:1" id="t9B-1j-vYI"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSD-sY-aIp">
+                                                <rect key="frame" x="10" y="20" width="313" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="City">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="dWU-I7-ivf" userLabel="First City Bottom Stack View">
                                                 <rect key="frame" x="0.0" y="229" width="343" height="50"/>
                                                 <subviews>
@@ -48,8 +48,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X67-WC-kzT" userLabel="First Min Temp">
-                                                                <rect key="frame" x="9" y="25.5" width="61" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X67-WC-kzT" userLabel="First Min Temp">
+                                                                <rect key="frame" x="9" y="46" width="61" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -74,8 +74,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-9E-MDb" userLabel="First Max Temp">
-                                                                <rect key="frame" x="0.0" y="25.5" width="69.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-9E-MDb" userLabel="First Max Temp">
+                                                                <rect key="frame" x="0.0" y="46" width="69.5" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -150,20 +150,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cU-Dn-4am" userLabel="Second City View">
                                         <rect key="frame" x="0.0" y="299" width="343" height="279"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwn-0U-Rry">
-                                                <rect key="frame" x="10" y="20" width="313" height="41"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <state key="normal" title="Boston">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                            </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xxz-fn-Kpp">
-                                                <rect key="frame" x="150" y="3" width="193" height="187.5"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="xxz-fn-Kpp">
+                                                <rect key="frame" x="150" y="0.0" width="193" height="193"/>
                                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xxz-fn-Kpp" secondAttribute="height" multiplier="1:1" id="JIB-Ez-zTl"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwn-0U-Rry">
+                                                <rect key="frame" x="10" y="20" width="313" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="City">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="q9G-Kb-LJm" userLabel="Second City Bottom Stack View">
                                                 <rect key="frame" x="0.0" y="229" width="343" height="50"/>
                                                 <subviews>
@@ -176,8 +176,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yu-hw-0Qv" userLabel="Second Min Temp">
-                                                                <rect key="frame" x="0.0" y="25.5" width="70" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yu-hw-0Qv" userLabel="Second Min Temp">
+                                                                <rect key="frame" x="0.0" y="46" width="70" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -202,8 +202,8 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOc-up-2gv" userLabel="Second Max Temp">
-                                                                <rect key="frame" x="0.0" y="25.5" width="69.5" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOc-up-2gv" userLabel="Second Max Temp">
+                                                                <rect key="frame" x="0.0" y="46" width="69.5" height="0.0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -289,6 +289,16 @@
                         <viewLayoutGuide key="safeArea" id="E7V-rV-wCC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="sun.min" catalog="system" id="M34-fs-ujk"/>
+                    <connections>
+                        <outlet property="cityOne" destination="kSD-sY-aIp" id="U6O-ad-3Wl"/>
+                        <outlet property="cityTwo" destination="vwn-0U-Rry" id="ZYj-l9-vtW"/>
+                        <outlet property="maxCityOne" destination="KkT-9E-MDb" id="bcf-pS-BaP"/>
+                        <outlet property="maxCityTwo" destination="eOc-up-2gv" id="aT5-4h-Fk4"/>
+                        <outlet property="minCityOne" destination="X67-WC-kzT" id="pmw-jH-6fW"/>
+                        <outlet property="minCityTwo" destination="1Yu-hw-0Qv" id="gS0-qE-vF4"/>
+                        <outlet property="weatherCityOne" destination="ZL3-I4-orr" id="IIK-9q-xkt"/>
+                        <outlet property="weatherCityTwo" destination="xxz-fn-Kpp" id="w0U-4o-G5D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgs-6E-ibE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -759,9 +769,9 @@ Language to translate View</string>
                         <color key="barTintColor" red="0.93022948500000002" green="0.48416012530000002" blue="0.2382268608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="3EY-bm-wjX" kind="relationship" relationship="viewControllers" id="ZDx-ji-hDl"/>
                         <segue destination="2TK-Th-vcE" kind="relationship" relationship="viewControllers" id="k8p-vq-riy"/>
                         <segue destination="gef-Bf-eCT" kind="relationship" relationship="viewControllers" id="Dfm-9S-Tjh"/>
-                        <segue destination="3EY-bm-wjX" kind="relationship" relationship="viewControllers" id="ZDx-ji-hDl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKp-4S-hST" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -774,9 +784,8 @@ Language to translate View</string>
         <image name="arrow.down.circle" catalog="system" width="64" height="60"/>
         <image name="arrow.up.arrow.down" catalog="system" width="64" height="48"/>
         <image name="book" catalog="system" width="64" height="50"/>
-        <image name="cloud.fill" catalog="system" width="64" height="42"/>
+        <image name="default" width="100" height="100"/>
         <image name="eurosign.circle" catalog="system" width="64" height="60"/>
-        <image name="sun.max.fill" catalog="system" width="64" height="62"/>
         <image name="sun.min" catalog="system" width="64" height="60"/>
     </resources>
 </document>
