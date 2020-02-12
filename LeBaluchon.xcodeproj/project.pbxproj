@@ -29,6 +29,8 @@
 		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
 		0D608EBA23F09740008E68C9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB923F09740008E68C9 /* Weather.swift */; };
 		0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961423F2C555004EC21E /* WeatherIcons.swift */; };
+		0D9E961723F32104004EC21E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961623F32104004EC21E /* ContentCell.swift */; };
+		0D9E961923F3224E004EC21E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961823F3224E004EC21E /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0D608EB923F09740008E68C9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		0D9E961423F2C555004EC21E /* WeatherIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcons.swift; sourceTree = "<group>"; };
+		0D9E961623F32104004EC21E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		0D9E961823F3224E004EC21E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,7 @@
 				0D0D420123E57E530077D6E1 /* TranslationViewController.swift */,
 				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
 				0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */,
+				0D9E961823F3224E004EC21E /* TableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 				0D0D41D423E31D4B0077D6E1 /* Main.storyboard */,
 				0D0D41D923E31D560077D6E1 /* LaunchScreen.storyboard */,
 				0D0D41F723E34AC10077D6E1 /* SalientButton.swift */,
+				0D9E961623F32104004EC21E /* ContentCell.swift */,
 				0D0D41F623E327890077D6E1 /* Extension */,
 			);
 			path = View;
@@ -320,12 +326,14 @@
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
 				0D608EBA23F09740008E68C9 /* Weather.swift in Sources */,
 				0D0D421023E98F440077D6E1 /* Change.swift in Sources */,
+				0D9E961923F3224E004EC21E /* TableViewController.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
 				0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */,
 				0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */,
 				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
 				0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
+				0D9E961723F32104004EC21E /* ContentCell.swift in Sources */,
 				0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
 				0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */,
