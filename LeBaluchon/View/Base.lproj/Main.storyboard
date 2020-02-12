@@ -348,13 +348,16 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Français">
+                                                        <state key="normal" title="Language">
                                                             <color key="titleColor" red="0.94166409969999998" green="0.59275311230000005" blue="0.254680723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <string key="userLabel">
 Language to translate</string>
+                                                        <connections>
+                                                            <action selector="toList:" destination="3EY-bm-wjX" eventType="touchUpInside" id="iNe-cd-iqg"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1S-7q-vLp" userLabel="New Language">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1S-7q-vLp" userLabel="New Language">
                                                         <rect key="frame" x="254" y="0.0" width="44" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
@@ -362,6 +365,9 @@ Language to translate</string>
                                                         </constraints>
                                                         <color key="tintColor" red="0.95761328940000001" green="0.71393847470000005" blue="0.29295998810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="arrow_down_circle"/>
+                                                        <connections>
+                                                            <action selector="toList:" destination="3EY-bm-wjX" eventType="touchUpInside" id="7mi-RZ-Jf9"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q57-OE-3R1" userLabel="Clear All">
                                                         <rect key="frame" x="299" y="0.0" width="44" height="44"/>
@@ -417,15 +423,18 @@ Language to translate View</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FwT-K4-Yh6" userLabel="Top View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-jW-Hc4" userLabel="Translated Language">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BrQ-jW-Hc4" userLabel="Translated Language">
                                                         <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Anglais">
+                                                        <state key="normal" title="Language">
                                                             <color key="titleColor" red="0.94166409969999998" green="0.59275311230000005" blue="0.254680723" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="toList:" destination="3EY-bm-wjX" eventType="touchUpInside" id="7h6-Pu-sUf"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKE-9Z-LOi" userLabel="New Language">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKE-9Z-LOi" userLabel="New Language">
                                                         <rect key="frame" x="254" y="0.0" width="44" height="44"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
@@ -433,6 +442,9 @@ Language to translate View</string>
                                                         </constraints>
                                                         <color key="tintColor" red="0.95761328940000001" green="0.71393847470000005" blue="0.29295998810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="arrow_down_circle"/>
+                                                        <connections>
+                                                            <action selector="toList:" destination="3EY-bm-wjX" eventType="touchUpInside" id="s7p-Pz-JLK"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVC-Y9-WQ8" userLabel="Swap">
                                                         <rect key="frame" x="299" y="0.0" width="44" height="44"/>
@@ -501,7 +513,7 @@ Language to translate View</string>
                     <connections>
                         <outlet property="bottomMainStackConstraint" destination="48w-EY-7Bq" id="y58-Z5-MoB"/>
                         <outlet property="languageToTranslate" destination="3St-yO-5Nl" id="k8R-UG-5ps"/>
-                        <outlet property="languageToTranslateTtextField" destination="ZpA-JX-wnz" id="doM-ib-6Ub"/>
+                        <outlet property="languageToTranslateTextField" destination="ZpA-JX-wnz" id="19T-QA-2iw"/>
                         <outlet property="languageTraductedTextView" destination="wk9-Uu-DG8" id="hqd-lB-eRW"/>
                         <outlet property="topMainStackConstraint" destination="KT5-rA-972" id="kqt-97-UcZ"/>
                         <outlet property="translatedLanguage" destination="BrQ-jW-Hc4" id="k4e-lI-UJV"/>
@@ -899,9 +911,11 @@ Language to translate View</string>
                     <connections>
                         <outlet property="searchBar" destination="kvZ-Mn-G4N" id="X8T-BI-3AF"/>
                         <outlet property="tableView" destination="PNm-Ia-DEE" id="TPe-NN-Wdf"/>
+                        <segue destination="6j0-4L-xQ0" kind="unwind" identifier="translationSegue" unwindAction="unwindtoTranslationViewControllerWithSegue:" id="s8a-my-5dY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZg-Gy-I5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6j0-4L-xQ0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1282.5" y="-135"/>
         </scene>
