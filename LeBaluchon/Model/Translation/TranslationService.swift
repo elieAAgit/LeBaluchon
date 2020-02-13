@@ -57,10 +57,10 @@ struct Language: Decodable {
 }
 
 struct Languages: Decodable {
-    let languages: [List]
+    let languages: [LanguagesList]
 }
 
-struct List: Decodable {
+struct LanguagesList: Decodable {
     let language: String
     let name: String
 }

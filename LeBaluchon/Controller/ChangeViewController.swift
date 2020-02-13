@@ -9,13 +9,20 @@
 import UIKit
 
 class ChangeViewController: UIViewController {
-    var change = Change()
-
+    // MARK: - Outlets and properties
     @IBOutlet weak var currencyToConvert: UILabel!
     @IBOutlet weak var currencyConverted: UILabel!
     @IBOutlet weak var currencyOne: UIButton!
     @IBOutlet weak var currencyTwo: UIButton!
-    
+
+    // Change class object
+    var change = Change()
+
+    // Properties to pass data between controller
+    var identifier: Identifier?
+    var passData: String?
+
+    // Properties necessary to carry out the swap
     var source = ""
     var target = ""
 
@@ -24,71 +31,112 @@ class ChangeViewController: UIViewController {
 
         change.delegate = self
 
-        currencyChange()
+        LoadingCurrencies()
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        moneyChoice()
+        currencyChoice()
+    }
+
+    /// Segue to come back to ChangeViewController
+    @IBAction func unwindtoChangeViewController(segue: UIStoryboardSegue) {
     }
 }
 
 // MARK: - Currency
 extension ChangeViewController {
-    private func currencyChange() {
+    /// Makes the two necessary network calls and initializes currencies
+    private func LoadingCurrencies() {
+        // Exchange rates network call
         ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-            if !success {
+            if success {
+                // Currencies name network call
+                ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
+                    if !success {
+                        // Alert
+                    }
+                }
+            } else {
                 // Alert
             }
         }
+
+        // Initialization of currencies
+        currencyOne.setTitle("Euro", for: .normal)
+        currencyTwo.setTitle("United States Dollar", for: .normal)
     }
 
-    private func moneyChoice() {
-        source = currencyOne.title(for: .normal) ?? "EUR"
-        target = currencyTwo.title(for: .normal) ?? "USD"
+    /// Display currency chose on TableView
+    private func currencyChoice() {
+        // passData none nil: if passData is nil, display will be empty
+        if identifier == .currencyOne && passData != nil {
+            currencyOne.setTitle(passData, for: .normal)
+        } else if identifier == .currencyTwo && passData != nil {
+            currencyTwo.setTitle(passData, for: .normal)
+        }
+
+        // Values ​​to swap (and currency conversion)
+        source = currencyOne.currentTitle!
+        target = currencyTwo.currentTitle!
+
+        // Clean properties and outlets to pass data between controller
+        identifier = nil
+        passData = nil
+        clearAll()
     }
 }
 
 // MARK: - User actions
 extension ChangeViewController {
+    /// A currency conversion is executed each time the source currency is changed
     @IBAction func tappedNumberButtons(_ sender: UIButton) {
         sender.animated()
 
         guard let toConvert = sender.currentTitle else {  return }
 
-        change.changeCurrency(toConvert: toConvert, currencyOne: source, currencyTwo: target)
+        // Execute conversion
+        change.changeCurrency(toConvert: toConvert, source: source, target: target)
     }
 
+    /// Swapping currency one and currency two
     @IBAction func swap(_ sender: UIButton) {
-            sender.animated()
-            
-            let toConvert: String!
+        sender.animated()
+        
+        let toConvert: String!
 
-            if source == currencyOne.title(for: .normal) && target == currencyTwo.title(for: .normal) {
-                toConvert = currencyConverted.text
+        // Swap
+        if source == currencyOne.title(for: .normal) && target == currencyTwo.title(for: .normal) {
+            toConvert = currencyConverted.text
 
-                currencyOne.setTitle(target, for: .normal)
-                currencyTwo.setTitle(source, for: .normal)
-                } else {
-                toConvert = currencyToConvert.text
+            currencyOne.setTitle(target, for: .normal)
+            currencyTwo.setTitle(source, for: .normal)
+            } else {
+            toConvert = currencyToConvert.text
 
-                currencyOne.setTitle(source, for: .normal)
-                currencyTwo.setTitle(target, for: .normal)
-            }
+            currencyOne.setTitle(source, for: .normal)
+            currencyTwo.setTitle(target, for: .normal)
+        }
 
-            source = currencyOne.currentTitle!
-            target = currencyTwo.currentTitle!
+        // Values to swap (and currency conversion)
+        source = currencyOne.currentTitle!
+        target = currencyTwo.currentTitle!
 
-            clearAll()
-            change.changeCurrency(toConvert: toConvert, currencyOne: source, currencyTwo: target)
-            change.clear()
+        // Clear all before swapping
+        clearAll()
+        // Execute conversion
+        change.changeCurrency(toConvert: toConvert, source: source, target: target)
+        // Clear change property storage
+        change.clear()
     }
 
+    /// Clear textFeld, textView and change property storage
     @IBAction func clear(_ sender: UIButton) {
         sender.animated()
 
         clearAll()
     }
 
+    /// Clear textFeld, textView and change property storage
     func clearAll() {
         change.clear()
 
@@ -99,8 +147,39 @@ extension ChangeViewController {
 
 // MARK: - Display currencies in View
 extension ChangeViewController: ChangeDelegate {
+    /// Display the change result
     func displayCurrencies() {
         self.currencyToConvert.text = change.currencyToConvert
         self.currencyConverted.text = change.currencyConverted
+    }
+}
+
+// MARK: - Segue to TableViewController
+extension ChangeViewController {
+    /// Action segue to list
+    @IBAction func toList(_ sender: UIButton) {
+        changeList(sender: sender)
+
+        performSegue(withIdentifier: SegueIdentifier.changeToList.rawValue, sender: self)
+    }
+
+    /// Identify which currency is the source of the action
+    private func changeList(sender: UIButton) {
+        // tag 4 = source currency, tag 5 = target currency
+        if sender.tag == 4 {
+            identifier = .currencyOne
+        } else if sender.tag == 5 {
+            identifier = .currencyTwo
+        }
+    }
+
+    /// Pass identifier to the next controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.changeToList.rawValue {
+            let tableViewController = segue.destination as! TableViewController
+            tableViewController.identifier = identifier
+        } else {
+            // Alert
+        }
     }
 }

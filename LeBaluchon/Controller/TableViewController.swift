@@ -49,6 +49,7 @@ extension TableViewController {
             segueName = SegueIdentifier.toTranslation.rawValue
         } else if identifier == .currencyOne || identifier == .currencyTwo {
             table = CurrencyStorage.currenciesKeys
+            segueName = SegueIdentifier.toChange.rawValue
         } else {
             // Alert
         }
@@ -104,6 +105,10 @@ extension TableViewController: UITableViewDelegate {
             let translationViewController = segue.destination as! TranslationViewController
             translationViewController.identifier = identifier
             translationViewController.passData = passData
+        } else if segue.identifier == SegueIdentifier.toChange.rawValue {
+            let changeViewController = segue.destination as! ChangeViewController
+            changeViewController.identifier = identifier
+            changeViewController.passData = passData
         } else {
             // Alert
         }

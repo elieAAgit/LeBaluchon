@@ -142,8 +142,8 @@
                                         </variation>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
-                                                <include reference="gf4-MZ-7hP"/>
                                                 <exclude reference="tZW-ZT-ycQ"/>
+                                                <include reference="gf4-MZ-7hP"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -270,8 +270,8 @@
                                         </variation>
                                         <variation key="heightClass=compact">
                                             <mask key="constraints">
-                                                <include reference="pTq-9I-TQv"/>
                                                 <exclude reference="CTo-bE-TB8"/>
+                                                <include reference="pTq-9I-TQv"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -572,12 +572,15 @@ Language to translate View</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Isw-SF-L3W" userLabel="First Money Stack View">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="94.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGp-Ig-ZIO" userLabel="Currency To Convert">
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGp-Ig-ZIO" userLabel="Currency To Convert">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177.5" height="94.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <state key="normal" title="EUR">
+                                                                <state key="normal" title="Currency">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="toList:" destination="2TK-Th-vcE" eventType="touchUpInside" id="IS4-9c-qhx"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-Pj-GAY">
                                                                 <rect key="frame" x="177.5" y="0.0" width="177.5" height="94.5"/>
@@ -604,12 +607,15 @@ Language to translate View</string>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="y0m-V5-Znj" userLabel="Second Money Stack View">
                                                         <rect key="frame" x="10" y="0.0" width="355" height="94"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ym-lk-O3L" userLabel="Converted Currency">
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ym-lk-O3L" userLabel="Converted Currency">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177.5" height="94"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <state key="normal" title="USD">
+                                                                <state key="normal" title="Currency">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="toList:" destination="2TK-Th-vcE" eventType="touchUpInside" id="bDI-WE-cWc"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9C-M5-cHc">
                                                                 <rect key="frame" x="177.5" y="0.0" width="177.5" height="94"/>
@@ -820,6 +826,7 @@ Language to translate View</string>
                         <outlet property="currencyOne" destination="UGp-Ig-ZIO" id="6aw-ta-CKz"/>
                         <outlet property="currencyToConvert" destination="Jkb-Pj-GAY" id="bC5-IM-imj"/>
                         <outlet property="currencyTwo" destination="6Ym-lk-O3L" id="jkF-jB-Vrl"/>
+                        <segue destination="a7a-kE-ab6" kind="show" identifier="changeList" id="Pz5-W8-96J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9W-Fm-lqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -912,6 +919,7 @@ Language to translate View</string>
                         <outlet property="searchBar" destination="kvZ-Mn-G4N" id="X8T-BI-3AF"/>
                         <outlet property="tableView" destination="PNm-Ia-DEE" id="TPe-NN-Wdf"/>
                         <segue destination="6j0-4L-xQ0" kind="unwind" identifier="translationSegue" unwindAction="unwindtoTranslationViewControllerWithSegue:" id="s8a-my-5dY"/>
+                        <segue destination="6j0-4L-xQ0" kind="unwind" identifier="changeSegue" unwindAction="unwindtoChangeViewControllerWithSegue:" id="cyM-MO-EwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DZg-Gy-I5Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -975,4 +983,7 @@ Language to translate View</string>
         <image name="circle" width="26.5" height="26.5"/>
         <image name="default" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pz5-W8-96J"/>
+    </inferredMetricsTieBreakers>
 </document>

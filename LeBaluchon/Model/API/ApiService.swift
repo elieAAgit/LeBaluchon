@@ -61,6 +61,8 @@ class ApiService {
                 apiChoice = ApiKeys.weatherSingleIdUrl
             case .weatherMultipleIdUrl:
                 apiChoice = ApiKeys.weatherMultipleIdUrl
+            case .currencyListUrl:
+                apiChoice = ApiKeys.currencyListUrl
         }
 
         return apiChoice
@@ -75,7 +77,7 @@ class ApiService {
             var assign: String
 
             switch apiUrl {
-                case .translateUrl, .currencyUrl:
+            case .translateUrl, .currencyUrl, .currencyListUrl:
                     assign = Method.post.rawValue
             case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl:
                     assign = Method.get.rawValue
@@ -124,17 +126,25 @@ class ApiService {
                 return
             }
 
-            for (key, _) in Array(responseJSON.rates.sorted(by: {$0.0 < $1.0})) {
-                CurrencyStorage.currenciesKeys.append(key)
+            CurrencyStorage.currencies = responseJSON.rates
+            callback(true, nil)
+        //
+        } else if apiUrl == ApiUrl.currencyListUrl {
+            guard let responseJSON = try? JSONDecoder().decode(CurrencyList.self, from: data) else {
+                callback(false, nil)
+                return
             }
 
-            CurrencyStorage.currencies = responseJSON.rates
+            for (key, value) in Array(responseJSON.symbols.sorted(by: {$0.0 < $1.0})) {
+                CurrencyStorage.currenciesKeys.append(value)
+                //
+                CurrencyStorage.currenciesList[value] = key
+            }
             callback(true, nil)
         //
         } else if apiUrl == ApiUrl.weatherSingleIdUrl {
             guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
                 callback(false, nil)
-                print("erreur")
                 return
             }
 
@@ -143,7 +153,6 @@ class ApiService {
         } else if apiUrl == ApiUrl.weatherMultipleIdUrl {
             guard let responseJSON = try? JSONDecoder().decode(WeatherMultiple.self, from: data) else {
                 callback(false, nil)
-                print("erreur")
                 return
             }
 

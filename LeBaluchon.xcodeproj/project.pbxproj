@@ -17,8 +17,6 @@
 		0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */; };
 		0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41FB23E35CD60077D6E1 /* UIButton.swift */; };
 		0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420123E57E530077D6E1 /* TranslationViewController.swift */; };
-		0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420723E779BF0077D6E1 /* Currency.swift */; };
-		0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */; };
 		0D0D421023E98F440077D6E1 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420F23E98F440077D6E1 /* Change.swift */; };
 		0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */; };
 		0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C723ECBE8000F33A93 /* TranslationService.swift */; };
@@ -29,6 +27,8 @@
 		0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAF23EF37DD008E68C9 /* ApiService.swift */; };
 		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
 		0D608EBA23F09740008E68C9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB923F09740008E68C9 /* Weather.swift */; };
+		0D6128E823F578B100E2C5D4 /* CurrencyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */; };
+		0D6128EA23F578F700E2C5D4 /* CurrencyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */; };
 		0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961423F2C555004EC21E /* WeatherIcons.swift */; };
 		0D9E961723F32104004EC21E /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961623F32104004EC21E /* ContentCell.swift */; };
 		0D9E961923F3224E004EC21E /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961823F3224E004EC21E /* TableViewController.swift */; };
@@ -59,8 +59,6 @@
 		0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		0D0D41FB23E35CD60077D6E1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		0D0D420123E57E530077D6E1 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
-		0D0D420723E779BF0077D6E1 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
-		0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorageArrays.swift; sourceTree = "<group>"; };
 		0D0D420F23E98F440077D6E1 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
 		0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDelegate.swift; sourceTree = "<group>"; };
 		0D4999C723ECBE8000F33A93 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
@@ -71,6 +69,8 @@
 		0D608EAF23EF37DD008E68C9 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0D608EB923F09740008E68C9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorage.swift; sourceTree = "<group>"; };
+		0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDecodable.swift; sourceTree = "<group>"; };
 		0D9E961423F2C555004EC21E /* WeatherIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcons.swift; sourceTree = "<group>"; };
 		0D9E961623F32104004EC21E /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		0D9E961823F3224E004EC21E /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -189,10 +189,10 @@
 		0D0D420623E779A50077D6E1 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				0D0D420D23E97CE10077D6E1 /* CurrencyStorageArrays.swift */,
-				0D0D420723E779BF0077D6E1 /* Currency.swift */,
 				0D0D420F23E98F440077D6E1 /* Change.swift */,
 				0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */,
+				0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */,
+				0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -334,18 +334,18 @@
 				0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */,
 				0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */,
 				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
+				0D6128EA23F578F700E2C5D4 /* CurrencyDecodable.swift in Sources */,
 				0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D5CA79423F4485B005C1B84 /* SegueIdentifier.swift in Sources */,
 				0D9E961723F32104004EC21E /* ContentCell.swift in Sources */,
 				0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
-				0D0D420E23E97CE10077D6E1 /* CurrencyStorageArrays.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
-				0D0D420823E779BF0077D6E1 /* Currency.swift in Sources */,
 				0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
 				0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */,
+				0D6128E823F578B100E2C5D4 /* CurrencyStorage.swift in Sources */,
 				0D608EAE23EF3691008E68C9 /* ApiKeys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

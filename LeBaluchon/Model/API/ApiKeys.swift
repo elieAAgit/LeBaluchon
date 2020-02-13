@@ -8,13 +8,15 @@
 
 import Foundation
 
+/// Network Call using POST method or GET method
 enum Method: String {
     case post = "POST"
     case get = "GET"
 }
 
+/// Different network call cases that can be made
 enum ApiUrl {
-    case translateUrl, languagesUrl, currencyUrl, weatherSingleIdUrl, weatherMultipleIdUrl
+    case translateUrl, languagesUrl, currencyUrl, currencyListUrl, weatherSingleIdUrl, weatherMultipleIdUrl
 }
 
 //MARK: - Translation
@@ -24,6 +26,7 @@ struct ApiKeys {
     static private let translatekey = "?key=AIzaSyDFDr4OL45OEAg0Wabd4X9QD7-hFwbUTJ0"
     static private let languagestarget = "&target=fr"
     static var parameters = ""
+
     // Translate
     static var translateUrl: String {
         return translateBase + translatekey
@@ -36,11 +39,19 @@ struct ApiKeys {
 
 // MARK: - Change
 extension ApiKeys {
-    static private let currencyBase = "http://data.fixer.io/api/latest?access_Key="
-    static private let currencyKey = "61f7748c51902a6bc510ac6a672ccc46&format=1"
-    //
+    static private let currencyBase = "http://data.fixer.io/api/"
+    static private let currencyChange = "latest"
+    static private let currencySymbols = "symbols"
+    static private let currencyKey = "?access_Key=61f7748c51902a6bc510ac6a672ccc46&format=1"
+
+    // Exchange rates
     static var currencyUrl: String {
-        return currencyBase + currencyKey
+        return currencyBase + currencyChange + currencyKey
+    }
+ 
+    // Currencies list
+    static var currencyListUrl: String {
+        return currencyBase + currencySymbols + currencyKey
     }
 }
 
@@ -53,11 +64,13 @@ extension ApiKeys {
     static var weatherSingleIdParameters = "weather?id="
     // ?? = Paris, 5128581 = New-York
     static var weatherMultipleIdParameters = "group?id=5128581,5128581"
-    //
+
+    // Single city calls
     static var weatherSingleIdUrl: String {
         return weatherBase + weatherSingleIdParameters + weatherKey + weatherLanguage + unit
     }
-    //
+
+    // Multiple cities calls
     static var weatherMultipleIdUrl: String {
         return weatherBase + weatherMultipleIdParameters + weatherKey + weatherLanguage + unit
     }
