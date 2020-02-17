@@ -9,8 +9,13 @@
 import UIKit
 
 class TableViewController: UIViewController {
-    //
-    var segueName: String?
+    // MARK: - Outlets and properties
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+
+    // Properties to pass data between controller
+    var segueDestination: String?
+    var segueOrigin: SegueIdentifier!
     var identifier: Identifier?
     var passData: String?
 
@@ -18,11 +23,8 @@ class TableViewController: UIViewController {
     var filtered: [String] = []
     var isFiltering = false
 
-    //
+    // Values loading in the tableView
     var table: [String] = []
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,36 +33,38 @@ class TableViewController: UIViewController {
         tableView.delegate = self
 
         searchBar.delegate = self
+
+        loadingTable(identifier: identifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         passData = nil
-
-        loadingTable(identifier: identifier)
     }
 }
 
+// MARK: - Loading datas on table
 extension TableViewController {
+    /// Loading the right table function of User actions
     private func loadingTable(identifier: Identifier?) {
         guard let identifier = identifier else { return }
 
+        // Display languages list
         if identifier == .languageOne || identifier == .languageTwo {
             table = LanguageStorage.languageKey
-            segueName = SegueIdentifier.toTranslation.rawValue
+        // Display currencies list
         } else if identifier == .currencyOne || identifier == .currencyTwo {
             table = CurrencyStorage.currenciesKeys
-            segueName = SegueIdentifier.toChange.rawValue
-        } else {
-            // Alert
         }
     }
 }
 
+// MARK: - Configure TableView
 extension TableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    /// Return all datas or only those resulting from user actions in searchbar
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filtered.count
@@ -68,7 +72,8 @@ extension TableViewController: UITableViewDataSource {
             return table.count
         }
     }
-    
+
+    /// Display the result in each cell of the table or filtered table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as? ContentCell else {
             return UITableViewCell()
@@ -88,34 +93,85 @@ extension TableViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Prepare Segue
 extension TableViewController: UITableViewDelegate {
+    /// Passing data between TableView and origin controller
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ContentCell
         passData = cell.labelCell.text
 
-        guard let segueName = segueName else { return }
+        segueDestination = destination()
+
+        guard let segueName = segueDestination else { return }
 
         performSegue(withIdentifier: segueName, sender: self)
     }
 
+    /// Controller destination is the same as the origin
+    private func destination() -> String {
+        if segueOrigin == .translationToList  {
+            return SegueIdentifier.toTranslation.rawValue
+        } else if segueOrigin == .changeToList  {
+            return SegueIdentifier.toChange.rawValue
+        } else if segueOrigin == .preferencesToList {
+            return SegueIdentifier.toPreferences.rawValue
+        } else if segueOrigin == .weatherToList {
+            return SegueIdentifier.toWeather.rawValue
+        } else {
+            // Alert
+        }
+
+        return ""
+    }
+
+    /// Prepare segue to pass data and identifier between controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let passData = passData else { return }
 
+        // To translation controller
         if segue.identifier == SegueIdentifier.toTranslation.rawValue {
             let translationViewController = segue.destination as! TranslationViewController
             translationViewController.identifier = identifier
             translationViewController.passData = passData
+        // To change controller
         } else if segue.identifier == SegueIdentifier.toChange.rawValue {
             let changeViewController = segue.destination as! ChangeViewController
             changeViewController.identifier = identifier
             changeViewController.passData = passData
+        // To user preferences controller: data not passed controller but directly to Userdefaults
+        } else if segue.identifier == SegueIdentifier.toPreferences.rawValue {
+            guard let identifier = identifier else { return }
+
+            userPreferences(identifier: identifier)
         } else {
             // Alert
         }
     }
+
+    /// Userdefaults data destination
+    private func userPreferences(identifier: Identifier) {
+        guard let passData = passData else { return }
+
+        switch identifier {
+            case .languageOne:
+                UserPreferences.languageOne = passData
+            case .languageTwo:
+                UserPreferences.languageTwo = passData
+            case .currencyOne:
+                UserPreferences.currencyOne = passData
+            case .currencyTwo:
+                UserPreferences.currencyTwo = passData
+            case .cityOne:
+                UserPreferences.cityOne = ""
+            case .cityTwo:
+                UserPreferences.cityTwo = ""
+        }
+    }
 }
 
+// MARK: - SearchBar
 extension TableViewController: UISearchBarDelegate {
+    /// Preparation of filtering in the searchbar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filtered = table.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased() })
             isFiltering = true

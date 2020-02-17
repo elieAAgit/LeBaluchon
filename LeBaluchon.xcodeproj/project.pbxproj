@@ -23,6 +23,9 @@
 		0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */; };
 		0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999CB23ECBFB600F33A93 /* LanguageService.swift */; };
 		0D5CA79423F4485B005C1B84 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CA79323F4485B005C1B84 /* SegueIdentifier.swift */; };
+		0D5F45A123FB273800F8223A /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5F45A023FB273800F8223A /* HeaderCell.swift */; };
+		0D5F800F23F7EA65002FCEB1 /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5F800E23F7EA65002FCEB1 /* UserPreferencesViewController.swift */; };
+		0D5F801223F8090B002FCEB1 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5F801123F8090B002FCEB1 /* UserPreferences.swift */; };
 		0D608EAE23EF3691008E68C9 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAD23EF3691008E68C9 /* ApiKeys.swift */; };
 		0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAF23EF37DD008E68C9 /* ApiService.swift */; };
 		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
@@ -65,6 +68,9 @@
 		0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStorage.swift; sourceTree = "<group>"; };
 		0D4999CB23ECBFB600F33A93 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		0D5CA79323F4485B005C1B84 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
+		0D5F45A023FB273800F8223A /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		0D5F800E23F7EA65002FCEB1 /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
+		0D5F801123F8090B002FCEB1 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		0D608EAD23EF3691008E68C9 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		0D608EAF23EF37DD008E68C9 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				0D0D420123E57E530077D6E1 /* TranslationViewController.swift */,
 				0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */,
 				0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */,
+				0D5F800E23F7EA65002FCEB1 /* UserPreferencesViewController.swift */,
 				0D9E961823F3224E004EC21E /* TableViewController.swift */,
 			);
 			path = Controller;
@@ -161,6 +168,7 @@
 				0D0D41D423E31D4B0077D6E1 /* Main.storyboard */,
 				0D0D41D923E31D560077D6E1 /* LaunchScreen.storyboard */,
 				0D0D41F723E34AC10077D6E1 /* SalientButton.swift */,
+				0D5F45A023FB273800F8223A /* HeaderCell.swift */,
 				0D9E961623F32104004EC21E /* ContentCell.swift */,
 				0D0D41F623E327890077D6E1 /* Extension */,
 			);
@@ -174,6 +182,7 @@
 				0D4999C623ECBE5700F33A93 /* Translation */,
 				0D0D420623E779A50077D6E1 /* Currency */,
 				0D608EB423F08CBD008E68C9 /* Weather */,
+				0D5F801023F80879002FCEB1 /* UserPreferences */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -205,6 +214,14 @@
 				0D4999CB23ECBFB600F33A93 /* LanguageService.swift */,
 			);
 			path = Translation;
+			sourceTree = "<group>";
+		};
+		0D5F801023F80879002FCEB1 /* UserPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				0D5F801123F8090B002FCEB1 /* UserPreferences.swift */,
+			);
+			path = UserPreferences;
 			sourceTree = "<group>";
 		};
 		0D608EAC23EF3671008E68C9 /* API */ = {
@@ -326,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5F800F23F7EA65002FCEB1 /* UserPreferencesViewController.swift in Sources */,
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
 				0D608EBA23F09740008E68C9 /* Weather.swift in Sources */,
+				0D5F45A123FB273800F8223A /* HeaderCell.swift in Sources */,
 				0D0D421023E98F440077D6E1 /* Change.swift in Sources */,
 				0D9E961923F3224E004EC21E /* TableViewController.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
@@ -342,6 +361,7 @@
 				0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
+				0D5F801223F8090B002FCEB1 /* UserPreferences.swift in Sources */,
 				0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
 				0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */,

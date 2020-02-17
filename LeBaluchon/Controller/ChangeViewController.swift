@@ -19,6 +19,7 @@ class ChangeViewController: UIViewController {
     var change = Change()
 
     // Properties to pass data between controller
+    var segueOrigin: SegueIdentifier = .changeToList
     var identifier: Identifier?
     var passData: String?
 
@@ -47,23 +48,23 @@ class ChangeViewController: UIViewController {
 extension ChangeViewController {
     /// Makes the two necessary network calls and initializes currencies
     private func LoadingCurrencies() {
-        // Exchange rates network call
-        ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-            if success {
-                // Currencies name network call
-                ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
-                    if !success {
-                        // Alert
+            // Exchange rates network call
+            ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
+                if success && CurrencyStorage.currenciesKeys.isEmpty {
+                    // Currencies name network call
+                    ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
+                        if !success {
+                            // Alert
+                        }
                     }
+                } else {
+                    // Alert
                 }
-            } else {
-                // Alert
             }
-        }
 
         // Initialization of currencies
-        currencyOne.setTitle("Euro", for: .normal)
-        currencyTwo.setTitle("United States Dollar", for: .normal)
+        currencyOne.setTitle(UserPreferences.currencyOne, for: .normal)
+        currencyTwo.setTitle(UserPreferences.currencyTwo, for: .normal)
     }
 
     /// Display currency chose on TableView
@@ -178,6 +179,7 @@ extension ChangeViewController {
         if segue.identifier == SegueIdentifier.changeToList.rawValue {
             let tableViewController = segue.destination as! TableViewController
             tableViewController.identifier = identifier
+            tableViewController.segueOrigin = segueOrigin
         } else {
             // Alert
         }

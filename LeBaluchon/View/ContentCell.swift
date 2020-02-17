@@ -9,6 +9,7 @@
 import UIKit
 
 class ContentCell: UITableViewCell {
+    // MARK: - Outlet
     @IBOutlet weak var labelCell: UILabel!
 
     override func awakeFromNib() {
@@ -21,6 +22,7 @@ class ContentCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    /// Display right label
     func configureCell(label: String) {
         labelCell.text = label
     }

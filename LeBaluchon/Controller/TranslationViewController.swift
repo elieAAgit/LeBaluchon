@@ -23,6 +23,7 @@ class TranslationViewController: UIViewController {
     var language = LanguageService()
 
     //
+    var segueOrigin: SegueIdentifier = .translationToList
     var identifier: Identifier?
     var passData: String?
 
@@ -61,14 +62,16 @@ class TranslationViewController: UIViewController {
 
 extension TranslationViewController {
     private func loadingLanguages() {
-        ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
-            if !success {
-                // Alert
+        if LanguageStorage.languageKey.isEmpty {
+            ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
+                if !success {
+                    // Alert
+                }
             }
         }
 
-        languageToTranslate.setTitle("Français", for: .normal)
-        translatedLanguage.setTitle("Anglais", for: .normal)
+        languageToTranslate.setTitle(UserPreferences.languageOne, for: .normal)
+        translatedLanguage.setTitle(UserPreferences.languageTwo, for: .normal)
     }
 
     private func currencyChoice() {
@@ -204,6 +207,7 @@ extension TranslationViewController {
         if segue.identifier == SegueIdentifier.translationToList.rawValue {
             let tableViewController = segue.destination as! TableViewController
             tableViewController.identifier = identifier
+            tableViewController.segueOrigin = segueOrigin
         } else {
             // Alert
         }

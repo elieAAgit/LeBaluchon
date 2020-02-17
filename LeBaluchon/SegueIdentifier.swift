@@ -12,8 +12,13 @@ import Foundation
 enum SegueIdentifier: String {
     case translationToList = "translationList"
     case changeToList = "changeList"
+    case weatherToList = "weatherList"
+    case weatherToDetail = "weatherDetail"
+    case preferencesToList = "preferencesList"
     case toTranslation = "translationSegue"
     case toChange = "changeSegue"
+    case toWeather = "weatherSegue"
+    case toPreferences = "preferencesSegue"
 }
 
 /// List of different useful identifiers for displaying the correct list and retrieve the data
