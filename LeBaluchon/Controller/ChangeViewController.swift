@@ -16,7 +16,7 @@ class ChangeViewController: UIViewController {
     @IBOutlet weak var currencyTwo: UIButton!
 
     // Change class object
-    var change = Change()
+    var change = ChangeService()
 
     // Properties to pass data between controller
     var segueOrigin: SegueIdentifier = .changeToList
@@ -24,13 +24,16 @@ class ChangeViewController: UIViewController {
     var passData: String?
 
     // Properties necessary to carry out the swap
-    var source = ""
-    var target = ""
+    var source = String()
+    var target = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         change.delegate = self
+
+        /// To display alert if needed
+        NotificationCenter.default.addObserver(self, selector: #selector(actionAlert(notification:)), name: .alertName, object: nil)
 
         LoadingCurrencies()
     }
@@ -54,11 +57,11 @@ extension ChangeViewController {
                     // Currencies name network call
                     ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
                         if !success {
-                            // Alert
+                            Notification.alertPost(alert: .currenciesList)
                         }
                     }
                 } else {
-                    // Alert
+                    Notification.alertPost(alert: .currenciesRates)
                 }
             }
 
@@ -74,6 +77,10 @@ extension ChangeViewController {
             currencyOne.setTitle(passData, for: .normal)
         } else if identifier == .currencyTwo && passData != nil {
             currencyTwo.setTitle(passData, for: .normal)
+        } else if currencyOne.currentTitle != UserPreferences.currencyOne {
+            currencyOne.setTitle(UserPreferences.currencyOne, for: .normal)
+        } else if currencyTwo.currentTitle != UserPreferences.currencyTwo {
+            currencyTwo.setTitle(UserPreferences.currencyTwo, for: .normal)
         }
 
         // Values ​​to swap (and currency conversion)
@@ -181,7 +188,7 @@ extension ChangeViewController {
             tableViewController.identifier = identifier
             tableViewController.segueOrigin = segueOrigin
         } else {
-            // Alert
+            Notification.alertPost(alert: .errorData)
         }
     }
 }

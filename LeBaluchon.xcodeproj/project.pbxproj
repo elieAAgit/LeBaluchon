@@ -17,9 +17,16 @@
 		0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */; };
 		0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D41FB23E35CD60077D6E1 /* UIButton.swift */; };
 		0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420123E57E530077D6E1 /* TranslationViewController.swift */; };
-		0D0D421023E98F440077D6E1 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420F23E98F440077D6E1 /* Change.swift */; };
+		0D0D421023E98F440077D6E1 /* ChangeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D420F23E98F440077D6E1 /* ChangeService.swift */; };
 		0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */; };
-		0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C723ECBE8000F33A93 /* TranslationService.swift */; };
+		0D46214723FBDA4300F170F6 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46214623FBDA4300F170F6 /* UIViewController.swift */; };
+		0D46214A23FBDA9100F170F6 /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46214923FBDA9100F170F6 /* Notification.Name.swift */; };
+		0D46214C23FBDBC200F170F6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46214B23FBDBC200F170F6 /* Notification.swift */; };
+		0D46217723FC501900F170F6 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46217623FC501900F170F6 /* UIView.swift */; };
+		0D46217923FC505200F170F6 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D46217823FC505200F170F6 /* Alert.storyboard */; };
+		0D46217B23FC532000F170F6 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46217A23FC532000F170F6 /* AlertService.swift */; };
+		0D46217D23FC537900F170F6 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D46217C23FC537900F170F6 /* AlertViewController.swift */; };
+		0D4999C823ECBE8000F33A93 /* TranslateDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C723ECBE8000F33A93 /* TranslateDecodable.swift */; };
 		0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */; };
 		0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4999CB23ECBFB600F33A93 /* LanguageService.swift */; };
 		0D5CA79423F4485B005C1B84 /* SegueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CA79323F4485B005C1B84 /* SegueIdentifier.swift */; };
@@ -29,7 +36,7 @@
 		0D608EAE23EF3691008E68C9 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAD23EF3691008E68C9 /* ApiKeys.swift */; };
 		0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAF23EF37DD008E68C9 /* ApiService.swift */; };
 		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
-		0D608EBA23F09740008E68C9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB923F09740008E68C9 /* Weather.swift */; };
+		0D608EBA23F09740008E68C9 /* WeatherDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB923F09740008E68C9 /* WeatherDecodable.swift */; };
 		0D6128E823F578B100E2C5D4 /* CurrencyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */; };
 		0D6128EA23F578F700E2C5D4 /* CurrencyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */; };
 		0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E961423F2C555004EC21E /* WeatherIcons.swift */; };
@@ -62,9 +69,16 @@
 		0D0D41F923E34BED0077D6E1 /* ChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeViewController.swift; sourceTree = "<group>"; };
 		0D0D41FB23E35CD60077D6E1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		0D0D420123E57E530077D6E1 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
-		0D0D420F23E98F440077D6E1 /* Change.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Change.swift; sourceTree = "<group>"; };
+		0D0D420F23E98F440077D6E1 /* ChangeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeService.swift; sourceTree = "<group>"; };
 		0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDelegate.swift; sourceTree = "<group>"; };
-		0D4999C723ECBE8000F33A93 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		0D46214623FBDA4300F170F6 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		0D46214923FBDA9100F170F6 /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
+		0D46214B23FBDBC200F170F6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		0D46217623FC501900F170F6 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		0D46217823FC505200F170F6 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		0D46217A23FC532000F170F6 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		0D46217C23FC537900F170F6 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		0D4999C723ECBE8000F33A93 /* TranslateDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDecodable.swift; sourceTree = "<group>"; };
 		0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageStorage.swift; sourceTree = "<group>"; };
 		0D4999CB23ECBFB600F33A93 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		0D5CA79323F4485B005C1B84 /* SegueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifier.swift; sourceTree = "<group>"; };
@@ -74,7 +88,7 @@
 		0D608EAD23EF3691008E68C9 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		0D608EAF23EF37DD008E68C9 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		0D608EB923F09740008E68C9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		0D608EB923F09740008E68C9 /* WeatherDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDecodable.swift; sourceTree = "<group>"; };
 		0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorage.swift; sourceTree = "<group>"; };
 		0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDecodable.swift; sourceTree = "<group>"; };
 		0D9E961423F2C555004EC21E /* WeatherIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcons.swift; sourceTree = "<group>"; };
@@ -158,6 +172,8 @@
 				0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */,
 				0D5F800E23F7EA65002FCEB1 /* UserPreferencesViewController.swift */,
 				0D9E961823F3224E004EC21E /* TableViewController.swift */,
+				0D94158023FD59A400BA83A8 /* CustomAlert */,
+				0D46214523FBDA0D00F170F6 /* Extension */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,10 +182,10 @@
 			isa = PBXGroup;
 			children = (
 				0D0D41D423E31D4B0077D6E1 /* Main.storyboard */,
+				0D46217823FC505200F170F6 /* Alert.storyboard */,
 				0D0D41D923E31D560077D6E1 /* LaunchScreen.storyboard */,
 				0D0D41F723E34AC10077D6E1 /* SalientButton.swift */,
-				0D5F45A023FB273800F8223A /* HeaderCell.swift */,
-				0D9E961623F32104004EC21E /* ContentCell.swift */,
+				0D94157F23FD595D00BA83A8 /* TableViewCustomCells */,
 				0D0D41F623E327890077D6E1 /* Extension */,
 			);
 			path = View;
@@ -183,6 +199,8 @@
 				0D0D420623E779A50077D6E1 /* Currency */,
 				0D608EB423F08CBD008E68C9 /* Weather */,
 				0D5F801023F80879002FCEB1 /* UserPreferences */,
+				0D46217E23FC55A900F170F6 /* Alert */,
+				0D46214823FBDA7200F170F6 /* Extension */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				0D0D41FB23E35CD60077D6E1 /* UIButton.swift */,
+				0D46217623FC501900F170F6 /* UIView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -198,7 +217,7 @@
 		0D0D420623E779A50077D6E1 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				0D0D420F23E98F440077D6E1 /* Change.swift */,
+				0D0D420F23E98F440077D6E1 /* ChangeService.swift */,
 				0D0D421123E991CF0077D6E1 /* ChangeDelegate.swift */,
 				0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */,
 				0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */,
@@ -206,12 +225,37 @@
 			path = Currency;
 			sourceTree = "<group>";
 		};
+		0D46214523FBDA0D00F170F6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0D46214623FBDA4300F170F6 /* UIViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0D46214823FBDA7200F170F6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0D46214923FBDA9100F170F6 /* Notification.Name.swift */,
+				0D46214B23FBDBC200F170F6 /* Notification.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		0D46217E23FC55A900F170F6 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				0D46217A23FC532000F170F6 /* AlertService.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		0D4999C623ECBE5700F33A93 /* Translation */ = {
 			isa = PBXGroup;
 			children = (
-				0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */,
-				0D4999C723ECBE8000F33A93 /* TranslationService.swift */,
 				0D4999CB23ECBFB600F33A93 /* LanguageService.swift */,
+				0D4999C923ECBF4900F33A93 /* LanguageStorage.swift */,
+				0D4999C723ECBE8000F33A93 /* TranslateDecodable.swift */,
 			);
 			path = Translation;
 			sourceTree = "<group>";
@@ -236,10 +280,27 @@
 		0D608EB423F08CBD008E68C9 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
-				0D608EB923F09740008E68C9 /* Weather.swift */,
 				0D9E961423F2C555004EC21E /* WeatherIcons.swift */,
+				0D608EB923F09740008E68C9 /* WeatherDecodable.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		0D94157F23FD595D00BA83A8 /* TableViewCustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				0D5F45A023FB273800F8223A /* HeaderCell.swift */,
+				0D9E961623F32104004EC21E /* ContentCell.swift */,
+			);
+			path = TableViewCustomCells;
+			sourceTree = "<group>";
+		};
+		0D94158023FD59A400BA83A8 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				0D46217C23FC537900F170F6 /* AlertViewController.swift */,
+			);
+			path = CustomAlert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +387,7 @@
 				0D0D41DB23E31D560077D6E1 /* LaunchScreen.storyboard in Resources */,
 				0D0D41D823E31D560077D6E1 /* Assets.xcassets in Resources */,
 				0D0D41D623E31D4B0077D6E1 /* Main.storyboard in Resources */,
+				0D46217923FC505200F170F6 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,26 +407,32 @@
 			files = (
 				0D5F800F23F7EA65002FCEB1 /* UserPreferencesViewController.swift in Sources */,
 				0D0D41FC23E35CD60077D6E1 /* UIButton.swift in Sources */,
-				0D608EBA23F09740008E68C9 /* Weather.swift in Sources */,
+				0D608EBA23F09740008E68C9 /* WeatherDecodable.swift in Sources */,
 				0D5F45A123FB273800F8223A /* HeaderCell.swift in Sources */,
-				0D0D421023E98F440077D6E1 /* Change.swift in Sources */,
+				0D46214723FBDA4300F170F6 /* UIViewController.swift in Sources */,
+				0D0D421023E98F440077D6E1 /* ChangeService.swift in Sources */,
+				0D46214A23FBDA9100F170F6 /* Notification.Name.swift in Sources */,
 				0D9E961923F3224E004EC21E /* TableViewController.swift in Sources */,
 				0D0D41CF23E31D4B0077D6E1 /* AppDelegate.swift in Sources */,
 				0D4999CC23ECBFB600F33A93 /* LanguageService.swift in Sources */,
 				0D9E961523F2C555004EC21E /* WeatherIcons.swift in Sources */,
 				0D0D421223E991CF0077D6E1 /* ChangeDelegate.swift in Sources */,
 				0D6128EA23F578F700E2C5D4 /* CurrencyDecodable.swift in Sources */,
+				0D46217D23FC537900F170F6 /* AlertViewController.swift in Sources */,
 				0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */,
 				0D0D420223E57E540077D6E1 /* TranslationViewController.swift in Sources */,
 				0D5CA79423F4485B005C1B84 /* SegueIdentifier.swift in Sources */,
 				0D9E961723F32104004EC21E /* ContentCell.swift in Sources */,
+				0D46217B23FC532000F170F6 /* AlertService.swift in Sources */,
 				0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */,
 				0D0D41F823E34AC10077D6E1 /* SalientButton.swift in Sources */,
 				0D0D41FA23E34BED0077D6E1 /* ChangeViewController.swift in Sources */,
+				0D46214C23FBDBC200F170F6 /* Notification.swift in Sources */,
 				0D5F801223F8090B002FCEB1 /* UserPreferences.swift in Sources */,
 				0D4999CA23ECBF4900F33A93 /* LanguageStorage.swift in Sources */,
 				0D0D41D123E31D4B0077D6E1 /* SceneDelegate.swift in Sources */,
-				0D4999C823ECBE8000F33A93 /* TranslationService.swift in Sources */,
+				0D46217723FC501900F170F6 /* UIView.swift in Sources */,
+				0D4999C823ECBE8000F33A93 /* TranslateDecodable.swift in Sources */,
 				0D6128E823F578B100E2C5D4 /* CurrencyStorage.swift in Sources */,
 				0D608EAE23EF3691008E68C9 /* ApiKeys.swift in Sources */,
 			);

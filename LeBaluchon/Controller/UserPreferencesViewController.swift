@@ -28,6 +28,9 @@ class UserPreferencesViewController: UITableViewController {
         // Register the custom header view
         tableView.register(HeaderCell.self, forHeaderFooterViewReuseIdentifier: "sectionHeader")
 
+        /// To display alert if needed
+        NotificationCenter.default.addObserver(self, selector: #selector(actionAlert(notification:)), name: .alertName, object: nil)
+
         loadingPreferences()
     }
 
@@ -59,7 +62,7 @@ extension UserPreferencesViewController {
         if LanguageStorage.languageKey.isEmpty {
             ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
                 if !success {
-                    // Alert
+                    Notification.alertPost(alert: .languagesList)
                 }
             }
         }
@@ -67,8 +70,8 @@ extension UserPreferencesViewController {
         if CurrencyStorage.currenciesKeys.isEmpty {
             // Currencies name network call
             ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
-                if success {
-                    // Alert
+                if !success {
+                    Notification.alertPost(alert: .currenciesList)
                 }
             }
         }
@@ -122,8 +125,6 @@ extension UserPreferencesViewController {
             identifier = .cityOne
         } else if cellLabel == "Ville 2" {
             identifier = .cityTwo
-        } else {
-            // Alert
         }
     }
 
@@ -134,7 +135,7 @@ extension UserPreferencesViewController {
             tableViewController.identifier = identifier
             tableViewController.segueOrigin = segueOrigin
         } else {
-            // Alert
+            Notification.alertPost(alert: .errorData)
         }
     }
 }

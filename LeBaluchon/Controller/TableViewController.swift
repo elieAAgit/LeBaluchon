@@ -117,8 +117,6 @@ extension TableViewController: UITableViewDelegate {
             return SegueIdentifier.toPreferences.rawValue
         } else if segueOrigin == .weatherToList {
             return SegueIdentifier.toWeather.rawValue
-        } else {
-            // Alert
         }
 
         return ""
@@ -144,7 +142,7 @@ extension TableViewController: UITableViewDelegate {
 
             userPreferences(identifier: identifier)
         } else {
-            // Alert
+            Notification.alertPost(alert: .errorData)
         }
     }
 

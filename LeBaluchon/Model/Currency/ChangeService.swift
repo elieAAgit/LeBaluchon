@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Change {
+class ChangeService {
     // Creating property delegation
     var delegate: ChangeDelegate?
     // Properties
@@ -22,8 +22,13 @@ class Change {
     func changeCurrency(toConvert: String, source: String, target: String) {
         self.toConvert.append(toConvert)
 
-        guard let currencyOne = CurrencyStorage.currenciesList[source] else { return }
-        guard let currencyTwo = CurrencyStorage.currenciesList[target] else { return }
+        guard let currencyOne = CurrencyStorage.currenciesList[source] else {
+            return Notification.alertPost(alert: .currencyUnknown)
+        }
+
+        guard let currencyTwo = CurrencyStorage.currenciesList[target] else {
+            return Notification.alertPost(alert: .currencyUnknown)
+        }
 
         // Merge the array into a single value
         currencyToConvert = self.toConvert.joined()
@@ -38,13 +43,22 @@ class Change {
     /// Calcul conversion
     private func calculToConvert(currencyToConvert: String, currencyOne: String, currencyTwo: String) -> String {
         // euro = base of calcul
-        guard let baseCurrency: Double = CurrencyStorage.currencies[currencyOne] else { return ""  }
+        guard let baseCurrency: Double = CurrencyStorage.currencies[currencyOne] else {
+            Notification.alertPost(alert: .currencyUnknown)
+            return ""
+        }
 
         // destination money
-        guard let change: Double = CurrencyStorage.currencies[currencyTwo] else {  return ""  }
+        guard let change: Double = CurrencyStorage.currencies[currencyTwo] else {
+            Notification.alertPost(alert: .currencyUnknown)
+            return ""
+        }
 
         // sum to convert in money two
-        guard let currencyToConvert = Double(currencyToConvert) else { return ""  }
+        guard let currencyToConvert = Double(currencyToConvert) else {
+            Notification.alertPost(alert: .inputError)
+            return ""
+        }
 
         let total = currencyToConvert / baseCurrency * change
 

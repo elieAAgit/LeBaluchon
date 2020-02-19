@@ -28,8 +28,8 @@ class TranslationViewController: UIViewController {
     var passData: String?
 
     // properties use for translation and swap
-    var source = ""
-    var target = ""
+    var source = String()
+    var target = String()
 
     
     override func viewDidLoad() {
@@ -38,6 +38,9 @@ class TranslationViewController: UIViewController {
         loadingLanguages()
 
         languageToTranslateTextField.delegate = self
+
+        /// To display alert if needed
+        NotificationCenter.default.addObserver(self, selector: #selector(actionAlert(notification:)), name: .alertName, object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
@@ -65,7 +68,7 @@ extension TranslationViewController {
         if LanguageStorage.languageKey.isEmpty {
             ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
                 if !success {
-                    // Alert
+                    Notification.alertPost(alert: .languagesList)
                 }
             }
         }
@@ -104,8 +107,6 @@ extension TranslationViewController: UITextFieldDelegate {
         ApiService.shared.getApiResponse(apiUrl: .translateUrl) { (success, translate) in
             if success, let translate = translate as? Translate {
                 self.languageTraductedTextView.text = translate.data.translations[0].translatedText
-            } else {
-                // Alert
             }
         }
     }
@@ -209,7 +210,7 @@ extension TranslationViewController {
             tableViewController.identifier = identifier
             tableViewController.segueOrigin = segueOrigin
         } else {
-            // Alert
+            Notification.alertPost(alert: .errorData)
         }
     }
 }

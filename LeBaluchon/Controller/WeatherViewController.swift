@@ -25,6 +25,11 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /// To display alert if needed
+        NotificationCenter.default.addObserver(self, selector: #selector(actionAlert(notification:)), name: .alertName, object: nil)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         weatherLoading()
     }
 }
@@ -35,7 +40,7 @@ extension WeatherViewController {
             if success, let cities = cities as? WeatherMultiple {
                 self.displayWeather(cities: cities)
             } else {
-                // Alert
+                Notification.alertPost(alert: .citiesDisplay)
             }
         }
     }
