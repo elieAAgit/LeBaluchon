@@ -31,17 +31,13 @@ struct WeatherMultiple: Decodable {
     let list: [WeatherList]
 }
 
-struct WeatherList: Decodable {
-    var coord: Coord
-    var sys: SysMulti
-    var weather: [WeatherInner]
-    var main: Main
-    var visibility: Double
-    var wind: Wind
-    var clouds: Clouds
-    var dt: Double
-    var id: Double
-    var name: String
+/// Structure for five days previsions
+struct WeatherForecast: Decodable {
+    var cod: String
+    var message: Int
+    var cnt: Int
+    var list: [previsionList]
+    var city: City
 }
 
 // MARK: - Single request in one network call
@@ -85,9 +81,60 @@ struct Sys: Decodable {
 }
 
 // MARK: - Multiple requests in one network call adaptations
+struct WeatherList: Decodable {
+    var coord: Coord
+    var sys: SysMulti
+    var weather: [WeatherInner]
+    var main: Main
+    var visibility: Double
+    var wind: Wind
+    var clouds: Clouds
+    var dt: Double
+    var id: Double
+    var name: String
+}
+
 struct SysMulti: Decodable {
     let country: String
     let timezone: Double
     let sunrise: Double
     let sunset: Double
+}
+
+// MARK: -
+struct previsionList: Decodable {
+    let dt: Int
+    let main: MainPrevision
+    let weather: [WeatherInner]
+    let clouds: Clouds
+    let wind: Wind
+    let sys: SysPrevision
+    let dt_txt: String
+}
+
+struct MainPrevision: Decodable {
+    let temp: Double
+    let feels_like: Double
+    let temp_min: Double
+    let temp_max: Double
+    let pressure: Double
+    let sea_level: Double
+    let grnd_level: Double
+    let humidity: Double
+    let temp_kf: Double
+}
+
+struct SysPrevision: Decodable {
+    let pod: String
+}
+
+struct City: Decodable {
+    var id: Int
+    var name: String
+    var coord: Coord
+    let country: String
+    var population: Double
+    var timezone: Int
+    var sunrise: Int
+    var sunset: Int
 }

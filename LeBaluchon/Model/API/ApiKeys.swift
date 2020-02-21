@@ -16,7 +16,8 @@ enum Method: String {
 
 /// Different network call cases that can be made
 enum ApiUrl {
-    case translateUrl, languagesUrl, currencyUrl, currencyListUrl, weatherSingleIdUrl, weatherMultipleIdUrl
+    case translateUrl, languagesUrl, currencyUrl, currencyListUrl, weatherSingleIdUrl, weatherMultipleIdUrl,
+    weatherForecastUrl
 }
 
 //MARK: - Translation
@@ -61,17 +62,24 @@ extension ApiKeys {
     static private let weatherKey = "&APPID="
     static private let weatherLanguage = "&lang=fr"
     static private let unit = "&units=metric"
-    static var weatherSingleIdParameters = "weather?id="
-    // ?? = Paris, 5128581 = New-York
-    static var weatherMultipleIdParameters = "group?id=5128581,5128581"
+    static var weatherSingleId = "weather?"
+    static private let weatherPrevision = "forecast?"
+    static var weatherParameters = "lat=&lon="
+    // 2968815 = Paris, 5128581 = New-York
+    static var weatherMultipleIdParameters = "group?id=2968815,5128581"
 
     // Single city calls
     static var weatherSingleIdUrl: String {
-        return weatherBase + weatherSingleIdParameters + weatherKey + weatherLanguage + unit
+        return weatherBase + weatherSingleId + weatherParameters + weatherKey + weatherLanguage + unit
     }
 
     // Multiple cities calls
     static var weatherMultipleIdUrl: String {
         return weatherBase + weatherMultipleIdParameters + weatherKey + weatherLanguage + unit
+    }
+    
+    // Five days previsions
+    static var weatherForecastUrl: String {
+        return weatherBase + weatherPrevision + weatherParameters + weatherKey + weatherLanguage + unit
     }
 }

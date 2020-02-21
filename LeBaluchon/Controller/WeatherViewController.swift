@@ -9,18 +9,26 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
-    var weatherIcon = WeatherIcons()
-
-    //
+    // MARK: - Outlets and properties
     @IBOutlet weak var cityOne: UIButton!
     @IBOutlet weak var weatherCityOne: UIImageView!
     @IBOutlet weak var minCityOne: UILabel!
     @IBOutlet weak var maxCityOne: UILabel!
-    //
+
     @IBOutlet weak var cityTwo: UIButton!
     @IBOutlet weak var weatherCityTwo: UIImageView!
     @IBOutlet weak var minCityTwo: UILabel!
     @IBOutlet weak var maxCityTwo: UILabel!
+
+    //
+    var weatherIcon = WeatherService()
+    //
+    var lon: String?
+    var lat: String?
+    var cityOneLon = String()
+    var cityOneLat = String()
+    var cityTwoLon = String()
+    var cityTwoLat = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +39,10 @@ class WeatherViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         weatherLoading()
+    }
+
+    /// Segue to come back to WeatherViewController
+    @IBAction func unwindtoChangeViewController(segue: UIStoryboardSegue) {
     }
 }
 
@@ -61,5 +73,44 @@ extension WeatherViewController {
         weatherCityTwo.image = UIImage(named: iconTwo)
         minCityTwo.text = String(format: "%.0f", listOne.main.temp_min)
         maxCityTwo.text = String(format: "%.0f", listOne.main.temp_max)
+
+        //
+        cityOneLon = String(listOne.coord.lon)
+        cityOneLat = String(listOne.coord.lat)
+        cityTwoLon = String(listTwo.coord.lon)
+        cityTwoLat = String(listTwo.coord.lat)
+    }
+}
+
+extension WeatherViewController {
+    @IBAction func detailButttonDidTap(_ sender: UIButton) {
+        sender.animated()
+
+        lonlat(sender: sender)
+
+        performSegue(withIdentifier: SegueIdentifier.weatherToDetail.rawValue, sender: self)
+    }
+
+    /// Identify longitude and latitude
+    private func lonlat(sender: UIButton) {
+        // tag 1 = city one, tag 2 = target two
+        if sender.tag == 1 {
+            lon = cityOneLon
+            lat = cityOneLat
+        } else if sender.tag == 2 {
+            lon = cityTwoLon
+            lat = cityTwoLat
+        }
+    }
+
+    /// Pass identifier to the next controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueIdentifier.weatherToDetail.rawValue {
+            let weatherDetailViewController = segue.destination as! WeatherDetailViewController
+            weatherDetailViewController.lon = lon
+            weatherDetailViewController.lat = lat
+        } else {
+            Notification.alertPost(alert: .errorData)
+        }
     }
 }

@@ -12,7 +12,7 @@ extension Notification {
     /// Cases of alerts
     enum Alert {
         case errorData, languageUnknown, languagesList, currenciesRates, currenciesList,
-        currencyUnknown, citiesDisplay, inputError
+        currencyUnknown, citiesDisplay, cityForecast, inputError
     }
 
     /// To sent an alert

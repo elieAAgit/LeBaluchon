@@ -41,6 +41,9 @@ extension UIViewController {
             case .citiesDisplay :
                     title = "Erreur"
                     message = "Impossible d'afficher la météo."
+            case .cityForecast :
+                title = "Erreur"
+                message = "La prevision meteo sur plusieurs jours n'est pas disponible."
             case .inputError :
                     title = "Saisie erronée"
                     message = "Une erreur a été détecté lors de la saisie. Veuillez recommencer."

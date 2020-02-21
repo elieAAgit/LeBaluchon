@@ -48,11 +48,13 @@ class ApiService {
 
     //
     private func apiChoice(apiUrl: ApiUrl) -> String {
-        var apiChoice = ""
+        var apiChoice = String()
 
         switch apiUrl {
             case .currencyUrl:
                 apiChoice = ApiKeys.currencyUrl
+            case .currencyListUrl:
+                apiChoice = ApiKeys.currencyListUrl
             case .translateUrl:
                 apiChoice = ApiKeys.translateUrl
             case .languagesUrl:
@@ -61,8 +63,8 @@ class ApiService {
                 apiChoice = ApiKeys.weatherSingleIdUrl
             case .weatherMultipleIdUrl:
                 apiChoice = ApiKeys.weatherMultipleIdUrl
-            case .currencyListUrl:
-                apiChoice = ApiKeys.currencyListUrl
+            case .weatherForecastUrl:
+                apiChoice = ApiKeys.weatherForecastUrl
         }
 
         return apiChoice
@@ -79,7 +81,7 @@ class ApiService {
             switch apiUrl {
             case .translateUrl, .currencyUrl, .currencyListUrl:
                     assign = Method.post.rawValue
-            case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl:
+            case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl, .weatherForecastUrl:
                     assign = Method.get.rawValue
             }
             
@@ -143,8 +145,7 @@ class ApiService {
             callback(true, nil)
         //
         } else if apiUrl == ApiUrl.weatherSingleIdUrl {
-            guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {
-                callback(false, nil)
+            guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {                callback(false, nil)
                 return
             }
 
@@ -152,6 +153,14 @@ class ApiService {
         //
         } else if apiUrl == ApiUrl.weatherMultipleIdUrl {
             guard let responseJSON = try? JSONDecoder().decode(WeatherMultiple.self, from: data) else {
+                callback(false, nil)
+                return
+            }
+
+            callback(true, responseJSON)
+        //
+        } else if apiUrl == ApiUrl.weatherForecastUrl {
+            guard let responseJSON = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
                 callback(false, nil)
                 return
             }
