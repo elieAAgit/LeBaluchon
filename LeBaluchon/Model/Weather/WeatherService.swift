@@ -23,11 +23,15 @@ class WeatherService {
 
         return assign
     }
+}
 
+extension WeatherService {
     func weatherParameters(lon: String, lat: String) {
         ApiKeys.weatherParameters = "lat=\(lat)&lon=\(lon)"
     }
+}
 
+extension WeatherService {
     func sunriseSunset(sunrise: Double, sunset: Double, completion: (String, String, String) -> Void) {
         let day = dayTime(dateTime: sunrise)
         let sunrise = sunTime(dateTime: sunrise)
@@ -59,7 +63,15 @@ class WeatherService {
     private func sunTime(dateTime: Double) -> String {
         let sunTime = dateConvert(dateTime: dateTime)
 
-        return hourTime(dateTime: sunTime)
+        var sun: [String] {
+            return sunTime.split(separator: " ").map { "\($0)" }
+        }
+
+        var sunDate: [String] {
+            return sun[1].split(separator: ":").map { "\($0)" }
+        }
+
+        return sunDate[0] + ":" + sunDate[1]
     }
 
     private func hourTime(dateTime: String) -> String {
@@ -93,5 +105,11 @@ class WeatherService {
         let now = df.string(from: dateTime)
 
         return now
+    }
+}
+
+extension WeatherService {
+    func citiesSearchParameters(search: String) {
+        ApiKeys.citiesWeatherParameters = "&namePrefix=\(search)"
     }
 }

@@ -17,7 +17,7 @@ enum Method: String {
 /// Different network call cases that can be made
 enum ApiUrl {
     case translateUrl, languagesUrl, currencyUrl, currencyListUrl, weatherSingleIdUrl, weatherMultipleIdUrl,
-    weatherForecastUrl
+    weatherForecastUrl, citiesListUrl
 }
 
 //MARK: - Translation
@@ -81,5 +81,18 @@ extension ApiKeys {
     // Five days previsions
     static var weatherForecastUrl: String {
         return weatherBase + weatherPrevision + weatherParameters + weatherKey + weatherLanguage + unit
+    }
+}
+
+// MARK: - World cities list
+extension ApiKeys {
+    //geodb-cities-api
+    static private let citiesWeatherBase = "http://geodb-free-service.wirefreethought.com/v1/"
+    static private let citiesWeatherSearch = "geo/cities?limit=5&offset=0"
+    static var citiesWeatherParameters = "&namePrefix="
+    static private let citiesWeatherLanguage = "&languageCode=fr"
+    //
+    static var citiesListUrl: String {
+        return citiesWeatherBase + citiesWeatherSearch + citiesWeatherParameters + citiesWeatherLanguage
     }
 }

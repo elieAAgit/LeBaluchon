@@ -14,11 +14,14 @@ enum SegueIdentifier: String {
     case changeToList = "changeList"
     case weatherToList = "weatherList"
     case weatherToDetail = "weatherDetail"
+    case weatherToSearch = "searchCity"
     case preferencesToList = "preferencesList"
+    case preferencesToSearch = "preferencesCity"
     case toTranslation = "translationSegue"
     case toChange = "changeSegue"
     case toWeather = "weatherSegue"
     case toPreferences = "preferencesSegue"
+    case searchToPreferences = "searchToPreferences"
 }
 
 /// List of different useful identifiers for displaying the correct list and retrieve the data

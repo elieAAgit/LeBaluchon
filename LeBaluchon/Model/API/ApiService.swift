@@ -65,6 +65,8 @@ class ApiService {
                 apiChoice = ApiKeys.weatherMultipleIdUrl
             case .weatherForecastUrl:
                 apiChoice = ApiKeys.weatherForecastUrl
+            case .citiesListUrl:
+                apiChoice = ApiKeys.citiesListUrl
         }
 
         return apiChoice
@@ -81,7 +83,7 @@ class ApiService {
             switch apiUrl {
             case .translateUrl, .currencyUrl, .currencyListUrl:
                     assign = Method.post.rawValue
-            case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl, .weatherForecastUrl:
+            case .languagesUrl, .weatherSingleIdUrl, .weatherMultipleIdUrl, .weatherForecastUrl, .citiesListUrl:
                     assign = Method.get.rawValue
             }
             
@@ -161,6 +163,14 @@ class ApiService {
         //
         } else if apiUrl == ApiUrl.weatherForecastUrl {
             guard let responseJSON = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
+                callback(false, nil)
+                return
+            }
+
+            callback(true, responseJSON)
+        //
+        } else if apiUrl == ApiUrl.citiesListUrl {
+            guard let responseJSON = try? JSONDecoder().decode(CitiesList.self, from: data) else {
                 callback(false, nil)
                 return
             }
