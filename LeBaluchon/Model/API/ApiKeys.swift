@@ -59,14 +59,14 @@ extension ApiKeys {
 // MARK: - Weather
 extension ApiKeys {
     static private let weatherBase = "http://api.openweathermap.org/data/2.5/"
-    static private let weatherKey = "&APPID="
+    static private let weatherKey = "&APPID=ab580b6ca1bcd75e35843e978133300c"
     static private let weatherLanguage = "&lang=fr"
     static private let unit = "&units=metric"
     static var weatherSingleId = "weather?"
     static private let weatherPrevision = "forecast?"
     static var weatherParameters = "lat=&lon="
-    // 2968815 = Paris, 5128581 = New-York
-    static var weatherMultipleIdParameters = "group?id=2968815,5128581"
+    // 
+    static var weatherMultipleIdParameters = "group?id=\(UserPreferences.cityOneId),\(UserPreferences.cityTwoId)"
 
     // Single city calls
     static var weatherSingleIdUrl: String {

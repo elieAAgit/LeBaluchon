@@ -31,7 +31,11 @@ class TranslationViewController: UIViewController {
     var source = String()
     var target = String()
 
-    
+    //
+    var userPreferenceLanguageOne = String()
+    var userPreferenceLanguageTwo = String()
+
+    ///
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +60,7 @@ class TranslationViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        currencyChoice()
+        languageChoice()
     }
 
     @IBAction func unwindtoTranslationViewController(segue: UIStoryboardSegue) {
@@ -65,23 +69,21 @@ class TranslationViewController: UIViewController {
 
 extension TranslationViewController {
     private func loadingLanguages() {
-        if LanguageStorage.languageKey.isEmpty {
-            ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
-                if !success {
-                    Notification.alertPost(alert: .languagesList)
-                }
-            }
-        }
-
         languageToTranslate.setTitle(UserPreferences.languageOne, for: .normal)
         translatedLanguage.setTitle(UserPreferences.languageTwo, for: .normal)
     }
 
-    private func currencyChoice() {
+    private func languageChoice() {
         if identifier == .languageOne && passData != nil {
             languageToTranslate.setTitle(passData, for: .normal)
         } else if identifier == .languageTwo && passData != nil {
             translatedLanguage.setTitle(passData, for: .normal)
+        }else if userPreferenceLanguageOne != UserPreferences.languageOne {
+            languageToTranslate.setTitle(UserPreferences.languageOne, for: .normal)
+            userPreferenceLanguageOne = UserPreferences.languageOne
+        } else if userPreferenceLanguageTwo != UserPreferences.languageTwo {
+            translatedLanguage.setTitle(UserPreferences.languageTwo, for: .normal)
+            userPreferenceLanguageTwo = UserPreferences.languageTwo
         }
 
         source = languageToTranslate.currentTitle!

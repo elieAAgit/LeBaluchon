@@ -16,6 +16,7 @@ class SearchCityViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     var weather = WeatherService()
+
     var searchList: CitiesList?
     var identifier: Identifier?
     var segueOrigin: SegueIdentifier?
@@ -96,23 +97,62 @@ extension SearchCityViewController: UITableViewDelegate {
     /// Controller destination is the same as the origin
     private func destination() -> String {
         if segueOrigin == .weatherToSearch {
-            return SegueIdentifier.toWeather.rawValue
+            return SegueIdentifier.searchToWeather.rawValue
         } else if segueOrigin == .preferencesToSearch  {
-            return SegueIdentifier.toChange.rawValue
+            return SegueIdentifier.searchToPreferences.rawValue
         }
-
         return ""
     }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SegueIdentifier.toWeather.rawValue {
+        if segue.identifier == SegueIdentifier.searchToWeather.rawValue {
             let weatherViewController = segue.destination as! WeatherViewController
             weatherViewController.identifier = identifier
             weatherViewController.data = data
         } else if segue.identifier == SegueIdentifier.searchToPreferences.rawValue {
-            let preferencesViewController = segue.destination as! UserPreferencesViewController
-            preferencesViewController.identifier = identifier
+            guard let identifier = identifier else { return }
+
+            userPreferences(identifier: identifier)
+        }
+    }
+
+    /// Userdefaults data destination
+    private func userPreferences(identifier: Identifier) {
+        guard let cityName = data["name"] else { return }
+        guard let cityLon = data["lon"] else { return }
+        guard let cityLat = data["lat"] else { return }
+
+        if identifier == .cityOne {
+            UserPreferences.cityOneData["name"] = cityName
+            UserPreferences.cityOneData["lon"] = cityLon
+            UserPreferences.cityOneData["lat"] = cityLat
+            UserPreferences.cityOne = cityName
+            userpreferencesCityId(identifier: identifier, lon: cityLon, lat: cityLat)
+        } else if identifier == .cityTwo {
+            UserPreferences.cityTwoData["name"] = cityName
+            UserPreferences.cityTwoData["lon"] = cityLon
+            UserPreferences.cityTwoData["lat"] = cityLat
+            UserPreferences.cityTwo = cityName
+            userpreferencesCityId(identifier: identifier, lon: cityLon, lat: cityLat)
+        }
+    }
+
+    private func userpreferencesCityId(identifier: Identifier, lon: String, lat: String) {
+        // Add parameters to url
+        weather.weatherParameters(lon: lon, lat: lat)
+
+        /// Weather details network call
+        ApiService.shared.getApiResponse(apiUrl: .weatherSingleIdUrl) { (success, city) in
+            if success, let city = city as? Weather {
+                if identifier == .cityOne {
+                    UserPreferences.cityOneId = String(city.id)
+                } else if identifier == .cityTwo {
+                    UserPreferences.cityTwoId = String(city.id)
+                }
+            } else {
+                Notification.alertPost(alert: .errorData)
+            }
         }
     }
 }

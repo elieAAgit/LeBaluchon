@@ -18,7 +18,7 @@ class UserPreferencesViewController: UITableViewController {
     @IBOutlet weak var cityTwo: UILabel!
 
     // Properties to pass data between controller
-    var segueOrigin: SegueIdentifier = .preferencesToList
+    var segueOrigin: SegueIdentifier?
     var identifier: Identifier?
     var passData: String?
 
@@ -36,8 +36,6 @@ class UserPreferencesViewController: UITableViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         loadingPreferences()
-
-        loadingApi()
     }
 
     /// Segue to come back to PreferencesPreferencesUserViewController
@@ -55,26 +53,6 @@ extension UserPreferencesViewController {
         currencyTwo.text = UserPreferences.currencyTwo
         cityOne.text = UserPreferences.cityOne
         cityTwo.text = UserPreferences.cityTwo
-    }
-
-    /// Loading APIs only if not already loaded
-    private func loadingApi() {
-        if LanguageStorage.languageKey.isEmpty {
-            ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
-                if !success {
-                    Notification.alertPost(alert: .languagesList)
-                }
-            }
-        }
-
-        if CurrencyStorage.currenciesKeys.isEmpty {
-            // Currencies name network call
-            ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
-                if !success {
-                    Notification.alertPost(alert: .currenciesList)
-                }
-            }
-        }
     }
 }
 
@@ -104,14 +82,14 @@ extension UserPreferencesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
 
-        assignIdentifier(cell: cell)
+        let segueDestination = assignIdentifierAndSegueDestination(cell: cell)
 
-        performSegue(withIdentifier: SegueIdentifier.preferencesToList.rawValue, sender: self)
+        performSegue(withIdentifier: segueDestination, sender: self)
     }
 
     /// Selected the right identifier for the segue to TableViewController
-    private func assignIdentifier(cell: UITableViewCell) {
-        guard let cellLabel = cell.textLabel?.text else { return }
+    private func assignIdentifierAndSegueDestination(cell: UITableViewCell) -> String {
+        guard let cellLabel = cell.textLabel?.text else { return "" }
         
         if cellLabel == "Langue 1" {
             identifier = .languageOne
@@ -126,6 +104,17 @@ extension UserPreferencesViewController {
         } else if cellLabel == "Ville 2" {
             identifier = .cityTwo
         }
+
+        switch identifier {
+            case .languageOne, .languageTwo, .currencyOne, .currencyTwo:
+                segueOrigin = SegueIdentifier.preferencesToList
+                return SegueIdentifier.preferencesToList.rawValue
+            case .cityOne, .cityTwo:
+                segueOrigin = SegueIdentifier.preferencesToSearch
+                return SegueIdentifier.preferencesToSearch.rawValue
+            case .none:
+                return ""
+        }
     }
 
     /// Pass identifiers to the next controller
@@ -134,6 +123,10 @@ extension UserPreferencesViewController {
             let tableViewController = segue.destination as! TableViewController
             tableViewController.identifier = identifier
             tableViewController.segueOrigin = segueOrigin
+        } else if segue.identifier == SegueIdentifier.preferencesToSearch.rawValue {
+            let searchViewController = segue.destination as! SearchCityViewController
+            searchViewController.identifier = identifier
+            searchViewController.segueOrigin = segueOrigin
         } else {
             Notification.alertPost(alert: .errorData)
         }

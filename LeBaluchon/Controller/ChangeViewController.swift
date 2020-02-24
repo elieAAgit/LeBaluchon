@@ -27,6 +27,10 @@ class ChangeViewController: UIViewController {
     var source = String()
     var target = String()
 
+    var userPreferencesOne = String()
+    var userPreferencesTwo = String()
+
+    ///
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,14 +57,7 @@ extension ChangeViewController {
     private func LoadingCurrencies() {
             // Exchange rates network call
             ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-                if success && CurrencyStorage.currenciesKeys.isEmpty {
-                    // Currencies name network call
-                    ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
-                        if !success {
-                            Notification.alertPost(alert: .currenciesList)
-                        }
-                    }
-                } else {
+                if !success {
                     Notification.alertPost(alert: .currenciesRates)
                 }
             }
@@ -68,6 +65,10 @@ extension ChangeViewController {
         // Initialization of currencies
         currencyOne.setTitle(UserPreferences.currencyOne, for: .normal)
         currencyTwo.setTitle(UserPreferences.currencyTwo, for: .normal)
+
+        //
+        userPreferencesOne = UserPreferences.currencyOne
+        userPreferencesTwo = UserPreferences.currencyTwo
     }
 
     /// Display currency chose on TableView
@@ -77,10 +78,12 @@ extension ChangeViewController {
             currencyOne.setTitle(passData, for: .normal)
         } else if identifier == .currencyTwo && passData != nil {
             currencyTwo.setTitle(passData, for: .normal)
-        } else if currencyOne.currentTitle != UserPreferences.currencyOne {
+        } else if userPreferencesOne != UserPreferences.currencyOne {
             currencyOne.setTitle(UserPreferences.currencyOne, for: .normal)
-        } else if currencyTwo.currentTitle != UserPreferences.currencyTwo {
+            userPreferencesOne = UserPreferences.currencyOne
+        } else if userPreferencesTwo != UserPreferences.currencyTwo {
             currencyTwo.setTitle(UserPreferences.currencyTwo, for: .normal)
+            userPreferencesTwo = UserPreferences.currencyTwo
         }
 
         // Values ​​to swap (and currency conversion)

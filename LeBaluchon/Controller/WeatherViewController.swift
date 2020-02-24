@@ -23,8 +23,8 @@ class WeatherViewController: UIViewController {
     //
     var weather = WeatherService()
     //
-    var identifier: Identifier?
     var segueOrigin: SegueIdentifier = .weatherToSearch
+    var identifier: Identifier?
     //
     var data: [String: String] = [:]
     var lon: String?
@@ -33,6 +33,9 @@ class WeatherViewController: UIViewController {
     var cityOneLat = String()
     var cityTwoLon = String()
     var cityTwoLat = String()
+
+    var userPreferencesOne = String()
+    var userPreferencesTwo = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,53 +67,94 @@ extension WeatherViewController {
     }
 
     private func displayWeather(cities: WeatherMultiple) {
-        let listOne = cities.list[0]
-        let listTwo = cities.list[1]
-        let iconOne = weather.weatherIcons(icon: listOne.weather[0].icon)
-        let iconTwo = weather.weatherIcons(icon: listTwo.weather[0].icon)
+        if cities.list.count >= 2 {
+            let listOne = cities.list[0]
+            let listTwo = cities.list[1]
+            let iconOne = weather.weatherIcons(icon: listOne.weather[0].icon)
+            let iconTwo = weather.weatherIcons(icon: listTwo.weather[0].icon)
 
-        cityOne.setTitle(listOne.name, for: .normal)
-        weatherCityOne.image = UIImage(named: iconOne)
-        minCityOne.text = String(format: "%.0f", listOne.main.temp_min)
-        maxCityOne.text = String(format: "%.0f", listOne.main.temp_max)
+            cityOne.setTitle(listOne.name, for: .normal)
+            weatherCityOne.image = UIImage(named: iconOne)
+            minCityOne.text = String(format: "%.0f", listOne.main.temp_min)
+            maxCityOne.text = String(format: "%.0f", listOne.main.temp_max)
 
-        //
-        cityTwo.setTitle(listTwo.name, for: .normal)
-        weatherCityTwo.image = UIImage(named: iconTwo)
-        minCityTwo.text = String(format: "%.0f", listOne.main.temp_min)
-        maxCityTwo.text = String(format: "%.0f", listOne.main.temp_max)
+            //
+            cityTwo.setTitle(listTwo.name, for: .normal)
+            weatherCityTwo.image = UIImage(named: iconTwo)
+            minCityTwo.text = String(format: "%.0f", listOne.main.temp_min)
+            maxCityTwo.text = String(format: "%.0f", listOne.main.temp_max)
 
-        //
-        cityOneLon = String(listOne.coord.lon)
-        cityOneLat = String(listOne.coord.lat)
-        cityTwoLon = String(listTwo.coord.lon)
-        cityTwoLat = String(listTwo.coord.lat)
+            //
+            cityOneLon = String(listOne.coord.lon)
+            cityOneLat = String(listOne.coord.lat)
+            cityTwoLon = String(listTwo.coord.lon)
+            cityTwoLat = String(listTwo.coord.lat)
+
+            //
+            userPreferencesOne = listOne.name
+            userPreferencesTwo = listTwo.name
+        } else {
+            Notification.alertPost(alert: .citiesDisplay)
+        }
     }
 
     /// To make network calls
     private func weatherReloading() {
+        if data != [:] {
+            reloadingToList()
+        } else if userPreferencesOne != UserPreferences.cityOne {
+            guard let name = UserPreferences.cityOneData["name"] else { return }
+            guard let lon = UserPreferences.cityOneData["lon"] else { return }
+            guard let lat = UserPreferences.cityOneData["lat"] else { return }
+            identifier = .cityOne
+
+            reloadingToPreferences(lon: lon, lat: lat)
+
+            userPreferencesOne = name
+        } else if userPreferencesTwo != UserPreferences.cityTwo {
+            guard let name = UserPreferences.cityTwoData["name"] else { return }
+            guard let lon = UserPreferences.cityTwoData["lon"] else { return }
+            guard let lat = UserPreferences.cityTwoData["lat"] else { return }
+            identifier = .cityTwo
+
+            reloadingToPreferences(lon: lon, lat: lat)
+
+            userPreferencesTwo = name
+        }
+    }
+
+    private func reloadingToList() {
         guard let cityName = data["name"] else { return }
         guard let lon = data["lon"] else { return }
         guard let lat = data["lat"] else { return }
 
-        if data != [:] {
-            if cityName != self.cityOne.currentTitle || cityName != self.cityTwo.currentTitle {
-                // Add parameters to url
-                weather.weatherParameters(lon: lon, lat: lat)
+        if cityName != self.cityOne.currentTitle || cityName != self.cityTwo.currentTitle {
+            // Add parameters to url
+            weather.weatherParameters(lon: lon, lat: lat)
 
-                /// Weather details network call
-                ApiService.shared.getApiResponse(apiUrl: .weatherSingleIdUrl) { (success, city) in
-                    if success, let city = city as? Weather {
-                        self.displayReload(city: city)
-                        self.data = [:]
-                    } else {
-                        Notification.alertPost(alert: .citiesDisplay)
-                    }
-                }
-            }
+            networlCall()
         }
     }
     
+    private func reloadingToPreferences(lon: String, lat: String) {
+        // Add parameters to url
+        weather.weatherParameters(lon: lon, lat: lat)
+
+        networlCall()
+    }
+
+    private func networlCall() {
+        /// Weather details network call
+        ApiService.shared.getApiResponse(apiUrl: .weatherSingleIdUrl) { (success, city) in
+            if success, let city = city as? Weather {
+                self.displayReload(city: city)
+                self.data = [:]
+            } else {
+                Notification.alertPost(alert: .citiesDisplay)
+            }
+        }
+    }
+
     private func displayReload(city: Weather) {
         let icon = weather.weatherIcons(icon: city.weather[0].icon)
 

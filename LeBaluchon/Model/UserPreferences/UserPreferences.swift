@@ -12,6 +12,10 @@ class UserPreferences {
     /// Storage preferences titles sections
     static let sections = ["Langues", "Devises", "Villes"]
 
+    ///
+    static var cityOneData: [String: String] = [:]
+    static var cityTwoData: [String: String] = [:]
+
     /// Keys for use Userdefaults methods
     private struct Keys {
         static let languageOne = "languageOne"
@@ -20,6 +24,8 @@ class UserPreferences {
         static let currencyTwo = "currencyTwo"
         static let cityOne = "cityOne"
         static let cityTwo = "cityTwo"
+        static let cityOneId = "cityOneId"
+        static let cityTwoId = "cityTwoId"
     }
 
     /// To save the user's preferred language one
@@ -65,20 +71,40 @@ class UserPreferences {
     /// To save the user's preferred city one
     static var cityOne: String {
         get {
-            return UserDefaults.standard.string(forKey: Keys.currencyTwo) ?? ""
+            return UserDefaults.standard.string(forKey: Keys.cityOne) ?? "Paris"
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.currencyTwo)
+            UserDefaults.standard.set(newValue, forKey: Keys.cityOne)
+        }
+    }
+
+    /// To save the user's preferred city one id. Default Paris: 2968815
+    static var cityOneId: String {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.cityOneId) ?? "2968815"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.cityOneId)
         }
     }
 
     /// To save the user's preferred city two
     static var cityTwo: String {
         get {
-            return UserDefaults.standard.string(forKey: Keys.currencyTwo) ?? ""
+            return UserDefaults.standard.string(forKey: Keys.cityTwo) ?? "New-York"
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Keys.currencyTwo)
+            UserDefaults.standard.set(newValue, forKey: Keys.cityTwo)
+        }
+    }
+
+    /// To save the user's preferred city one id. Default New-York: 5128581
+    static var cityTwoId: String {
+        get {
+            return UserDefaults.standard.string(forKey: Keys.cityTwoId) ?? "5128581"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Keys.cityTwoId)
         }
     }
 }

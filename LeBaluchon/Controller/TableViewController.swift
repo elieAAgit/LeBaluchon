@@ -14,8 +14,7 @@ class TableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     // Properties to pass data between controller
-    var segueDestination: String?
-    var segueOrigin: SegueIdentifier!
+    var segueOrigin: SegueIdentifier?
     var identifier: Identifier?
     var passData: String?
 
@@ -33,12 +32,12 @@ class TableViewController: UIViewController {
         tableView.delegate = self
 
         searchBar.delegate = self
-
-        loadingTable(identifier: identifier)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         passData = nil
+
+        loadingTable(identifier: identifier)
     }
 }
 
@@ -50,10 +49,38 @@ extension TableViewController {
 
         // Display languages list
         if identifier == .languageOne || identifier == .languageTwo {
-            table = LanguageStorage.languageKey
+            if LanguageStorage.languageKey.isEmpty {
+                // Loading API only if not already loaded
+                ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
+                    if success {
+                        self.table = LanguageStorage.languageKey
+                        self.tableView.reloadData()
+                    } else {
+                        Notification.alertPost(alert: .languagesList)
+                    }
+                }
+            } else {
+                table = LanguageStorage.languageKey
+                tableView.reloadData()
+            }
+
         // Display currencies list
         } else if identifier == .currencyOne || identifier == .currencyTwo {
-            table = CurrencyStorage.currenciesKeys
+            // Loading API only if not already loaded
+            if CurrencyStorage.currenciesKeys.isEmpty {
+                // Currencies name network call
+                ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
+                    if success {
+                        self.table = CurrencyStorage.currenciesKeys
+                        self.tableView.reloadData()
+                    } else {
+                        Notification.alertPost(alert: .currenciesList)
+                    }
+                }
+            } else {
+                table = CurrencyStorage.currenciesKeys
+                tableView.reloadData()
+            }
         }
     }
 }
@@ -100,23 +127,19 @@ extension TableViewController: UITableViewDelegate {
         let cell = tableView.cellForRow(at: indexPath) as! ContentCell
         passData = cell.labelCell.text
 
-        segueDestination = destination()
-
-        guard let segueName = segueDestination else { return }
-
-        performSegue(withIdentifier: segueName, sender: self)
+        let segueDestination = destination()
+    
+        performSegue(withIdentifier: segueDestination, sender: self)
     }
 
     /// Controller destination is the same as the origin
     private func destination() -> String {
         if segueOrigin == .translationToList  {
-            return SegueIdentifier.toTranslation.rawValue
+            return SegueIdentifier.listToTranslation.rawValue
         } else if segueOrigin == .changeToList  {
-            return SegueIdentifier.toChange.rawValue
+            return SegueIdentifier.ListToChange.rawValue
         } else if segueOrigin == .preferencesToList {
-            return SegueIdentifier.toPreferences.rawValue
-        } else if segueOrigin == .weatherToList {
-            return SegueIdentifier.toWeather.rawValue
+            return SegueIdentifier.listToPreferences.rawValue
         }
 
         return ""
@@ -127,17 +150,17 @@ extension TableViewController: UITableViewDelegate {
         guard let passData = passData else { return }
 
         // To translation controller
-        if segue.identifier == SegueIdentifier.toTranslation.rawValue {
+        if segue.identifier == SegueIdentifier.listToTranslation.rawValue {
             let translationViewController = segue.destination as! TranslationViewController
             translationViewController.identifier = identifier
             translationViewController.passData = passData
         // To change controller
-        } else if segue.identifier == SegueIdentifier.toChange.rawValue {
+        } else if segue.identifier == SegueIdentifier.ListToChange.rawValue {
             let changeViewController = segue.destination as! ChangeViewController
             changeViewController.identifier = identifier
             changeViewController.passData = passData
         // To user preferences controller: data not passed controller but directly to Userdefaults
-        } else if segue.identifier == SegueIdentifier.toPreferences.rawValue {
+        } else if segue.identifier == SegueIdentifier.listToPreferences.rawValue {
             guard let identifier = identifier else { return }
 
             userPreferences(identifier: identifier)
@@ -149,20 +172,15 @@ extension TableViewController: UITableViewDelegate {
     /// Userdefaults data destination
     private func userPreferences(identifier: Identifier) {
         guard let passData = passData else { return }
-
-        switch identifier {
-            case .languageOne:
-                UserPreferences.languageOne = passData
-            case .languageTwo:
-                UserPreferences.languageTwo = passData
-            case .currencyOne:
-                UserPreferences.currencyOne = passData
-            case .currencyTwo:
-                UserPreferences.currencyTwo = passData
-            case .cityOne:
-                UserPreferences.cityOne = ""
-            case .cityTwo:
-                UserPreferences.cityTwo = ""
+        
+        if identifier == .languageOne {
+            UserPreferences.languageOne = passData
+        } else if identifier == .languageTwo {
+            UserPreferences.languageTwo = passData
+        } else if identifier == .currencyOne {
+            UserPreferences.currencyOne = passData
+        } else if identifier == .currencyTwo {
+            UserPreferences.currencyTwo = passData
         }
     }
 }
