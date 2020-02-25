@@ -36,6 +36,7 @@
 		0D608EB023EF37DD008E68C9 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EAF23EF37DD008E68C9 /* ApiService.swift */; };
 		0D608EB323EF4C79008E68C9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */; };
 		0D608EBA23F09740008E68C9 /* WeatherDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D608EB923F09740008E68C9 /* WeatherDecodable.swift */; };
+		0D611D6D24055D930026D220 /* ApiServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D611D6C24055D930026D220 /* ApiServiceTest.swift */; };
 		0D6128E823F578B100E2C5D4 /* CurrencyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */; };
 		0D6128EA23F578F700E2C5D4 /* CurrencyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */; };
 		0D615AED24044BD300A87B01 /* Fixer.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D615AEC24044BD300A87B01 /* Fixer.json */; };
@@ -94,6 +95,7 @@
 		0D608EAF23EF37DD008E68C9 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		0D608EB223EF4C79008E68C9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		0D608EB923F09740008E68C9 /* WeatherDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDecodable.swift; sourceTree = "<group>"; };
+		0D611D6C24055D930026D220 /* ApiServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTest.swift; sourceTree = "<group>"; };
 		0D6128E723F578B100E2C5D4 /* CurrencyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyStorage.swift; sourceTree = "<group>"; };
 		0D6128E923F578F700E2C5D4 /* CurrencyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDecodable.swift; sourceTree = "<group>"; };
 		0D615AEC24044BD300A87B01 /* Fixer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Fixer.json; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		0D0D41E423E31D570077D6E1 /* LeBaluchonTests */ = {
 			isa = PBXGroup;
 			children = (
+				0D611D6C24055D930026D220 /* ApiServiceTest.swift */,
 				0D615AF224044CC800A87B01 /* UrlSessionFake.swift */,
 				0D615AF024044C4D00A87B01 /* FakeResponseData.swift */,
 				0D615AEC24044BD300A87B01 /* Fixer.json */,
@@ -467,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D615AF124044C4D00A87B01 /* FakeResponseData.swift in Sources */,
+				0D611D6D24055D930026D220 /* ApiServiceTest.swift in Sources */,
 				0D615AF324044CC800A87B01 /* UrlSessionFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

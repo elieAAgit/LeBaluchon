@@ -17,7 +17,7 @@ class FakeResponseData {
 
     static var fixerCorrectData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "FixerTests", withExtension: "json")
+        let url = bundle.url(forResource: "Fixer", withExtension: "json")
         let data = try! Data(contentsOf: url!)
     
         return data
