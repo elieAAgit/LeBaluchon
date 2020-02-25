@@ -1,0 +1,34 @@
+{
+    "data": [
+        {
+            "id": 144571,
+            "wikiDataId": "Q90",
+            "type": "CITY",
+            "city": "Paris",
+            "name": "Paris",
+            "country": "France",
+            "countryCode": "FR",
+            "region": "Île-de-France",
+            "regionCode": "IDF",
+            "latitude": 48.8534,
+            "longitude": 2.3486
+        },
+        {
+            "id": 118566,
+            "wikiDataId": "Q830149",
+            "type": "CITY",
+            "city": "Paris",
+            "name": "Paris",
+            "country": "États-Unis",
+            "countryCode": "US",
+            "region": "Texas",
+            "regionCode": "TX",
+            "latitude": 33.66094,
+            "longitude": -95.55551
+        }
+    ],
+    "metadata": {
+        "currentOffset": 0,
+        "totalCount": 2
+    }
+}

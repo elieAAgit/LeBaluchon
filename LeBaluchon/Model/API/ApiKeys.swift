@@ -49,7 +49,7 @@ extension ApiKeys {
     static var currencyUrl: String {
         return currencyBase + currencyChange + currencyKey
     }
- 
+
     // Currencies list
     static var currencyListUrl: String {
         return currencyBase + currencySymbols + currencyKey
@@ -77,7 +77,7 @@ extension ApiKeys {
     static var weatherMultipleIdUrl: String {
         return weatherBase + weatherMultipleIdParameters + weatherKey + weatherLanguage + unit
     }
-    
+
     // Five days previsions
     static var weatherForecastUrl: String {
         return weatherBase + weatherPrevision + weatherParameters + weatherKey + weatherLanguage + unit
