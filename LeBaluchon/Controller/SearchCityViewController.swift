@@ -49,6 +49,8 @@ extension SearchCityViewController {
             self.searchList = cities
             self.searchCityTableView.reloadData()
         }
+
+        hideKeyboard()
     }
 }
 
