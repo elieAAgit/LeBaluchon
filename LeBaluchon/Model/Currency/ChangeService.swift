@@ -16,7 +16,7 @@ class ChangeService {
     var currencyConverted = ""
 
     /// Array to store the value to convert
-    private var toConvert: [String] = []
+    var toConvert: [String] = []
 
     /// Convert money one on money two
     func changeCurrency(toConvert: String, source: String, target: String) {
