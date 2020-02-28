@@ -10,39 +10,6 @@ import XCTest
 @testable import LeBaluchon
 
 class ApiServiceTest: XCTestCase {
-
-    func testGetApiResponseShouldPostFailedCallbackIfError() {
-        // Given
-        let apiService = ApiService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
-
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-       apiService.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-            // Then
-            XCTAssertFalse(success)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 0.01)
-    }
-
-    func testGetApiResponseShouldPostFailedCallbackIfNoData() {
-        // Given
-        let apiService = ApiService(
-            session: URLSessionFake(data: nil, response: nil, error: nil))
-
-        // When
-        let expectation = XCTestExpectation(description: "Wait for queue change.")
-       apiService.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-            // Then
-            XCTAssertFalse(success)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 0.01)
-    }
-
 // MARK: - Generic tests functions
     private func testGetApiResponseShouldPostFailedCallbackIfIncorrectResponse(apiUrl: ApiUrl, data: Data?) {
         // Given
@@ -91,8 +58,42 @@ class ApiServiceTest: XCTestCase {
 
         wait(for: [expectation], timeout: 0.01)
     }
+}
 
 // MARK: - Testing network calls
+extension ApiServiceTest {
+// MARK: - General failure tests
+    func testGetApiResponseShouldPostFailedCallbackIfError() {
+        // Given
+        let apiService = ApiService(
+            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+       apiService.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
+            // Then
+            XCTAssertFalse(success)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
+
+    func testGetApiResponseShouldPostFailedCallbackIfNoData() {
+        // Given
+        let apiService = ApiService(
+            session: URLSessionFake(data: nil, response: nil, error: nil))
+
+        // When
+        let expectation = XCTestExpectation(description: "Wait for queue change.")
+       apiService.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
+            // Then
+            XCTAssertFalse(success)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 0.01)
+    }
 
 // MARK: - Translate: translateUrl
     func testGetApiResponseTranslateUrl() {
