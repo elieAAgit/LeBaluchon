@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>WeatherKey</key>
+	<string>&amp;APPID=ab580b6ca1bcd75e35843e978133300c</string>
+	<key>CurrencyKey</key>
+	<string>?access_Key=61f7748c51902a6bc510ac6a672ccc46&amp;format=1</string>
+	<key>TranslateKey</key>
+	<string>?key=AIzaSyDFDr4OL45OEAg0Wabd4X9QD7-hFwbUTJ0</string>
+</dict>
+</plist>

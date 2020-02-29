@@ -24,7 +24,7 @@ enum ApiUrl {
 struct ApiKeys {
     static private let translateBase = "https://translation.googleapis.com/language/translate/v2"
     static private let languagesList = "/languages"
-    static private let translatekey = "?key=AIzaSyDFDr4OL45OEAg0Wabd4X9QD7-hFwbUTJ0"
+    static private let translatekey = valueForAPIKey(named:"TranslateKey")
     static private let languagestarget = "&target=fr"
     static var parameters = ""
 
@@ -43,7 +43,7 @@ extension ApiKeys {
     static private let currencyBase = "http://data.fixer.io/api/"
     static private let currencyChange = "latest"
     static private let currencySymbols = "symbols"
-    static private let currencyKey = "?access_Key=61f7748c51902a6bc510ac6a672ccc46&format=1"
+    static private let currencyKey = valueForAPIKey(named:"CurrencyKey")
 
     // Exchange rates
     static var currencyUrl: String {
@@ -59,7 +59,7 @@ extension ApiKeys {
 // MARK: - Weather
 extension ApiKeys {
     static private let weatherBase = "http://api.openweathermap.org/data/2.5/"
-    static private let weatherKey = "&APPID=ab580b6ca1bcd75e35843e978133300c"
+    static private let weatherKey = valueForAPIKey(named:"WeatherKey")
     static private let weatherLanguage = "&lang=fr"
     static private let unit = "&units=metric"
     static var weatherSingleId = "weather?"

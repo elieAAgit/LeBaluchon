@@ -69,6 +69,14 @@ class TranslationViewController: UIViewController {
 
 extension TranslationViewController {
     private func loadingLanguages() {
+        if LanguageStorage.languageKey.isEmpty {
+            ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
+                if !success {
+                    Notification.alertPost(alert: .languagesList)
+                }
+            }
+        }
+
         languageToTranslate.setTitle(UserPreferences.languageOne, for: .normal)
         translatedLanguage.setTitle(UserPreferences.languageTwo, for: .normal)
     }

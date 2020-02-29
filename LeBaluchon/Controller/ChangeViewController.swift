@@ -57,7 +57,14 @@ extension ChangeViewController {
     private func LoadingCurrencies() {
             // Exchange rates network call
             ApiService.shared.getApiResponse(apiUrl: .currencyUrl) { (success, nil) in
-                if !success {
+                if success && CurrencyStorage.currenciesKeys.isEmpty {
+                    // Currencies name network call
+                    ApiService.shared.getApiResponse(apiUrl: .currencyListUrl) { (success, nil) in
+                        if !success {
+                            Notification.alertPost(alert: .currenciesList)
+                        }
+                    }
+                } else {
                     Notification.alertPost(alert: .currenciesRates)
                 }
             }
