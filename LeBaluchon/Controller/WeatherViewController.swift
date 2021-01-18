@@ -20,12 +20,13 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var minCityTwo: UILabel!
     @IBOutlet weak var maxCityTwo: UILabel!
 
-    //
+    // Weather class object
     var weather = WeatherService()
-    //
+
+    // Properties to pass data between controller
     var segueOrigin: SegueIdentifier = .weatherToSearch
     var identifier: Identifier?
-    //
+
     var data: [String: String] = [:]
     var lon: String?
     var lat: String?
@@ -55,7 +56,9 @@ class WeatherViewController: UIViewController {
     }
 }
 
+// MARK: - Weather
 extension WeatherViewController {
+    /// Network call
     private func weatherLoading() {
         ApiService.shared.getApiResponse(apiUrl: .weatherMultipleIdUrl) { (success, cities) in
             if success, let cities = cities as? WeatherMultiple {
@@ -66,6 +69,7 @@ extension WeatherViewController {
         }
     }
 
+    /// Show selected cities
     private func displayWeather(cities: WeatherMultiple) {
         if cities.list.count >= 2 {
             let listOne = cities.list[0]
@@ -78,19 +82,16 @@ extension WeatherViewController {
             minCityOne.text = String(format: "%.0f", listOne.main.temp_min)
             maxCityOne.text = String(format: "%.0f", listOne.main.temp_max)
 
-            //
             cityTwo.setTitle(listTwo.name, for: .normal)
             weatherCityTwo.image = UIImage(named: iconTwo)
             minCityTwo.text = String(format: "%.0f", listOne.main.temp_min)
             maxCityTwo.text = String(format: "%.0f", listOne.main.temp_max)
 
-            //
             cityOneLon = String(listOne.coord.lon)
             cityOneLat = String(listOne.coord.lat)
             cityTwoLon = String(listTwo.coord.lon)
             cityTwoLat = String(listTwo.coord.lat)
 
-            //
             userPreferencesOne = listOne.name
             userPreferencesTwo = listTwo.name
         } else {
@@ -123,6 +124,7 @@ extension WeatherViewController {
         }
     }
 
+    /// If one city has chaned
     private func reloadingToList() {
         guard let cityName = data["name"] else { return }
         guard let lon = data["lon"] else { return }
@@ -132,19 +134,20 @@ extension WeatherViewController {
             // Add parameters to url
             weather.weatherParameters(lon: lon, lat: lat)
 
-            networlCall()
+            networkCall()
         }
     }
-    
+
+    /// If preferences have changed
     private func reloadingToPreferences(lon: String, lat: String) {
         // Add parameters to url
         weather.weatherParameters(lon: lon, lat: lat)
 
-        networlCall()
+        networkCall()
     }
 
-    private func networlCall() {
-        /// Weather details network call
+    /// Weather details network call
+    private func networkCall() {
         ApiService.shared.getApiResponse(apiUrl: .weatherSingleIdUrl) { (success, city) in
             if success, let city = city as? Weather {
                 self.displayReload(city: city)
@@ -155,6 +158,7 @@ extension WeatherViewController {
         }
     }
 
+    /// Reloading datas of the two cities selected
     private func displayReload(city: Weather) {
         let icon = weather.weatherIcons(icon: city.weather[0].icon)
 
@@ -176,13 +180,16 @@ extension WeatherViewController {
     }
 }
 
+// MARK: - Segue
 extension WeatherViewController {
+    /// Redirecting to search city
     @IBAction func cityButtonDidTap(_ sender: UIButton) {
         identifier(sender: sender)
 
         performSegue(withIdentifier: SegueIdentifier.weatherToSearch.rawValue, sender: self)
     }
 
+    /// Redirecting to detail
     @IBAction func detailButttonDidTap(_ sender: UIButton) {
         sender.animated()
 
@@ -191,6 +198,7 @@ extension WeatherViewController {
         performSegue(withIdentifier: SegueIdentifier.weatherToDetail.rawValue, sender: self)
     }
 
+    /// Identifier of the city
     private func identifier(sender: UIButton) {
         if sender.title(for: .normal) == cityOne.title(for: .normal) {
             identifier = .cityOne

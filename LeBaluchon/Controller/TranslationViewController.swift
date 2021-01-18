@@ -9,7 +9,7 @@
 import UIKit
 
 class TranslationViewController: UIViewController {
-    //
+    // MARK: - Outlets and properties
     @IBOutlet weak var languageToTranslate: UIButton!
     @IBOutlet weak var translatedLanguage: UIButton!
     @IBOutlet weak var languageToTranslateTextField: UITextField!
@@ -19,10 +19,10 @@ class TranslationViewController: UIViewController {
     @IBOutlet weak var topMainStackConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomMainStackConstraint: NSLayoutConstraint!
 
-    //
+    // Language class object
     var language = LanguageService()
 
-    //
+    // Properties to pass data between controller
     var segueOrigin: SegueIdentifier = .translationToList
     var identifier: Identifier?
     var passData: String?
@@ -31,11 +31,9 @@ class TranslationViewController: UIViewController {
     var source = String()
     var target = String()
 
-    //
     var userPreferenceLanguageOne = String()
     var userPreferenceLanguageTwo = String()
 
-    ///
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,11 +61,17 @@ class TranslationViewController: UIViewController {
         languageChoice()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        hideKeyboard()
+    }
+
     @IBAction func unwindtoTranslationViewController(segue: UIStoryboardSegue) {
     }
 }
 
+// MARK: - Translation
 extension TranslationViewController {
+    ///Network call
     private func loadingLanguages() {
         if LanguageStorage.languageKey.isEmpty {
             ApiService.shared.getApiResponse(apiUrl: .languagesUrl) { (success, nil) in
@@ -81,6 +85,7 @@ extension TranslationViewController {
         translatedLanguage.setTitle(UserPreferences.languageTwo, for: .normal)
     }
 
+    /// Display language chose on TableView
     private func languageChoice() {
         if identifier == .languageOne && passData != nil {
             languageToTranslate.setTitle(passData, for: .normal)
@@ -94,9 +99,11 @@ extension TranslationViewController {
             userPreferenceLanguageTwo = UserPreferences.languageTwo
         }
 
+        // Values ​​to swap 
         source = languageToTranslate.currentTitle!
         target = translatedLanguage.currentTitle!
 
+        // Clean properties and outlets to pass data between controller
         identifier = nil
         passData = nil
         clearAllTextField()
@@ -105,10 +112,12 @@ extension TranslationViewController {
 
 // MARK: - Keyboard control
 extension TranslationViewController: UITextFieldDelegate {
+    ///Translate when a letter is typed
     func textFieldDidChangeSelection(_ textField: UITextField) {
         translate()
     }
 
+    ///Translate
     private func translate() {
         guard let languageForTraduct = languageToTranslateTextField.text else {  return }
 
@@ -121,16 +130,19 @@ extension TranslationViewController: UITextFieldDelegate {
         }
     }
 
+    ///Remove the keyboard
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         hideKeyboard()
     }
 
+    ///Remove the keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
 
         return true
     }
 
+    ///Remove the keyboard
     private func hideKeyboard() {
         languageToTranslateTextField.resignFirstResponder()
     }
@@ -138,6 +150,7 @@ extension TranslationViewController: UITextFieldDelegate {
 
 // MARK: - Adaptive view depending on the keyboard
 extension TranslationViewController {
+    ///Adjust the elements according to the presence of the keyboard
     @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {  return }
 
@@ -164,6 +177,7 @@ extension TranslationViewController {
 
 // MARK: - Swap and clear actions
 extension TranslationViewController {
+    /// Swapping languages
     @IBAction func swap(_ sender: UIButton) {
         sender.animated()
 
@@ -186,12 +200,14 @@ extension TranslationViewController {
         translate()
     }
 
+    ///Clear the textfields
     @IBAction func clear(_ sender: UIButton) {
         sender.animated()
 
         clearAllTextField()
     }
 
+    ///Clear the textfields
     private func clearAllTextField() {
         languageToTranslateTextField.text = nil
         languageTraductedTextView.text = nil
@@ -200,12 +216,14 @@ extension TranslationViewController {
 
 // MARK: - Segue to TableViewController
 extension TranslationViewController {
+    /// Action segue to list
     @IBAction func toList(_ sender: UIButton) {
         languageList(sender: sender)
 
         performSegue(withIdentifier: SegueIdentifier.translationToList.rawValue, sender: self)
     }
 
+    /// Identify which language is the source of the action
     private func languageList(sender: UIButton) {
         if sender.tag == 0 || sender.tag == 1 {
             identifier = .languageOne
@@ -214,6 +232,7 @@ extension TranslationViewController {
         }
     }
 
+    /// Pass identifier to the next controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.translationToList.rawValue {
             let tableViewController = segue.destination as! TableViewController

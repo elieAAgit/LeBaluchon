@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Store the available languages in an array
 struct LanguageStorage {
     static var languageKey: [String] = []
 

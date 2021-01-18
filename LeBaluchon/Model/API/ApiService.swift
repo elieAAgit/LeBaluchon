@@ -9,11 +9,10 @@
 import Foundation
 
 class ApiService {
-    /// Singleton pattern
+    // Singleton pattern
     static var shared = ApiService()
     private init() {}
 
-    //
     private var task: URLSessionDataTask?
     private var session = URLSession(configuration: .default)
 
@@ -21,7 +20,7 @@ class ApiService {
         self.session = session
     }
 
-    //
+    //API request
     func getApiResponse(apiUrl: ApiUrl, callback: @escaping (Bool, Any?) -> Void) {
         let UrlChoice = apiChoice(apiUrl: apiUrl)
         let request = getRequest(UrlChoice: UrlChoice, apiUrl: apiUrl)
@@ -46,7 +45,7 @@ class ApiService {
         task?.resume()
     }
 
-    //
+    ///Choice of service call
     private func apiChoice(apiUrl: ApiUrl) -> String {
         var apiChoice = String()
 
@@ -72,11 +71,11 @@ class ApiService {
         return apiChoice
     }
 
-    //
+    ///Choice of method
     private func getRequest(UrlChoice: String, apiUrl: ApiUrl) -> URLRequest {
         let requestUrl = URL(string: UrlChoice)!
         var request = URLRequest(url: requestUrl)
-        //
+
         var method: String {
             var assign: String
 
@@ -100,9 +99,9 @@ class ApiService {
         return request
     }
 
-    //
+    ///Call response
     private func responseJsonResolution(apiUrl: ApiUrl, response: HTTPURLResponse, callback: @escaping (Bool, Any?) -> Void, data: Data) {
-        //
+        //Translate
         if apiUrl == ApiUrl.translateUrl {
             guard let responseJSON = try? JSONDecoder().decode(Translate.self, from: data) else {
                 callback(false, nil)
@@ -110,7 +109,7 @@ class ApiService {
             }
 
             callback(true, responseJSON)
-        //
+        //Language list
         } else if apiUrl == ApiUrl.languagesUrl {
             guard let responseJSON = try? JSONDecoder().decode(Language.self, from: data) else {
                 callback(false, nil)
@@ -123,7 +122,7 @@ class ApiService {
             }
             
             callback(true, nil)
-        //
+        //Currency
         } else if apiUrl == ApiUrl.currencyUrl {
             guard let responseJSON = try? JSONDecoder().decode(Currency.self, from: data) else {
                 callback(false, nil)
@@ -132,7 +131,7 @@ class ApiService {
 
             CurrencyStorage.currencies = responseJSON.rates
             callback(true, nil)
-        //
+        //Currency list
         } else if apiUrl == ApiUrl.currencyListUrl {
             guard let responseJSON = try? JSONDecoder().decode(CurrencyList.self, from: data) else {
                 callback(false, nil)
@@ -145,14 +144,14 @@ class ApiService {
                 CurrencyStorage.currenciesList[value] = key
             }
             callback(true, nil)
-        //
+        //New city
         } else if apiUrl == ApiUrl.weatherSingleIdUrl {
             guard let responseJSON = try? JSONDecoder().decode(Weather.self, from: data) else {                callback(false, nil)
                 return
             }
 
             callback(true, responseJSON)
-        //
+        //Loading cities
         } else if apiUrl == ApiUrl.weatherMultipleIdUrl {
             guard let responseJSON = try? JSONDecoder().decode(WeatherMultiple.self, from: data) else {
                 callback(false, nil)
@@ -160,7 +159,7 @@ class ApiService {
             }
 
             callback(true, responseJSON)
-        //
+        //Detail weather
         } else if apiUrl == ApiUrl.weatherForecastUrl {
             guard let responseJSON = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
                 callback(false, nil)
@@ -168,7 +167,7 @@ class ApiService {
             }
 
             callback(true, responseJSON)
-        //
+        //Choice of city
         } else if apiUrl == ApiUrl.citiesListUrl {
             guard let responseJSON = try? JSONDecoder().decode(CitiesList.self, from: data) else {
                 callback(false, nil)

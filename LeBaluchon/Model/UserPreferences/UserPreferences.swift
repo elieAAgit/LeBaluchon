@@ -12,7 +12,7 @@ class UserPreferences {
     /// Storage preferences titles sections
     static let sections = ["Langues", "Devises", "Villes"]
 
-    ///
+
     static var cityOneData: [String: String] = [:]
     static var cityTwoData: [String: String] = [:]
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+// Struct to decode json from internet for cities list API
 struct CitiesList: Decodable {
     let data: [List]
     let metadata: Metadata

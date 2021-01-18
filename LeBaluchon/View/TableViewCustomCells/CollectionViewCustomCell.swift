@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Use for weather detail
 class CollectionViewCustomCell: UICollectionViewCell {
     // MARK: - Outlets and Properties
     @IBOutlet weak var dateLabel: UILabel!

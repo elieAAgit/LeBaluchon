@@ -73,7 +73,6 @@ extension ChangeViewController {
         currencyOne.setTitle(UserPreferences.currencyOne, for: .normal)
         currencyTwo.setTitle(UserPreferences.currencyTwo, for: .normal)
 
-        //
         userPreferencesOne = UserPreferences.currencyOne
         userPreferencesTwo = UserPreferences.currencyTwo
     }

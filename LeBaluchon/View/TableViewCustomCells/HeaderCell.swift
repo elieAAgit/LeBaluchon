@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Configuration of the header of the preferences list
 class HeaderCell: UITableViewHeaderFooterView {
     // MARK: - Properties
     let view = UIView()

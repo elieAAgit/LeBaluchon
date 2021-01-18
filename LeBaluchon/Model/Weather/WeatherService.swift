@@ -33,7 +33,8 @@ extension WeatherService {
 
 extension WeatherService {
     func citiesSearchParameters(search: String) {
-        let searchTreated = search.trimmingCharacters(in: .whitespaces)
+        //let searchTreated = search.trimmingCharacters(in: .whitespaces)
+        let searchTreated = search.replacingOccurrences(of: " ", with: "+")
         ApiKeys.citiesWeatherParameters = "&namePrefix=\(searchTreated)"
     }
 }

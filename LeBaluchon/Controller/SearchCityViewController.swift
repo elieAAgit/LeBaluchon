@@ -35,7 +35,9 @@ class SearchCityViewController: UIViewController {
     }
 }
 
+// MARK: - Search button
 extension SearchCityViewController {
+    /// Send data to search a city
     @IBAction func buttonSearchDidTap(_ sender: UIButton) {
         sender.animated()
 
@@ -44,25 +46,30 @@ extension SearchCityViewController {
         weather.citiesSearchParameters(search: search)
 
         ApiService.shared.getApiResponse(apiUrl: .citiesListUrl) { (success, cities) in
-            guard let cities = cities as? CitiesList else { return }
+            if success {
+                guard let cities = cities as? CitiesList else { return }
 
-            self.searchList = cities
-            self.searchCityTableView.reloadData()
+                self.searchList = cities
+                self.searchCityTableView.reloadData()
+            }
         }
 
         hideKeyboard()
     }
 }
 
+// MARK: - Configure TableView
 extension SearchCityViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    /// Return datas
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchList?.data.count ?? 0
     }
-    
+
+    /// Display the result in each cell of the table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") else {
             return UITableViewCell()
@@ -82,7 +89,9 @@ extension SearchCityViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Prepare Segue
 extension SearchCityViewController: UITableViewDelegate {
+    /// Passing data between TableView and weather detail
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let lon = searchList?.data[indexPath.row].longitude else { return }
         guard let lat = searchList?.data[indexPath.row].latitude else { return }
@@ -106,7 +115,7 @@ extension SearchCityViewController: UITableViewDelegate {
         return ""
     }
 
-
+    /// Prepare segue to pass data and identifier between controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SegueIdentifier.searchToWeather.rawValue {
             let weatherViewController = segue.destination as! WeatherViewController
@@ -140,8 +149,8 @@ extension SearchCityViewController: UITableViewDelegate {
         }
     }
 
+    ///Add parameters to url
     private func userpreferencesCityId(identifier: Identifier, lon: String, lat: String) {
-        // Add parameters to url
         weather.weatherParameters(lon: lon, lat: lat)
 
         /// Weather details network call
@@ -161,16 +170,19 @@ extension SearchCityViewController: UITableViewDelegate {
 
 // MARK: - Keyboard
 extension SearchCityViewController: UITextFieldDelegate {
+    ///Remove keyboard
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         hideKeyboard()
     }
 
+    ///Remove keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         hideKeyboard()
 
         return true
     }
 
+    ///Remove keyboard
     private func hideKeyboard() {
         searchCity.resignFirstResponder()
     }

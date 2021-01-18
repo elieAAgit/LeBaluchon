@@ -65,7 +65,6 @@ extension ApiKeys {
     static var weatherSingleId = "weather?"
     static private let weatherPrevision = "forecast?"
     static var weatherParameters = "lat=&lon="
-    // 
     static var weatherMultipleIdParameters = "group?id=\(UserPreferences.cityOneId),\(UserPreferences.cityTwoId)"
 
     // Single city calls
@@ -91,7 +90,8 @@ extension ApiKeys {
     static private let citiesWeatherSearch = "geo/cities?limit=5&offset=0"
     static var citiesWeatherParameters = "&namePrefix="
     static private let citiesWeatherLanguage = "&languageCode=fr"
-    //
+
+    //Search Cities
     static var citiesListUrl: String {
         return citiesWeatherBase + citiesWeatherSearch + citiesWeatherParameters + citiesWeatherLanguage
     }

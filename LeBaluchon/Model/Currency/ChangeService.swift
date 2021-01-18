@@ -67,7 +67,7 @@ class ChangeService {
         return currencyConverted
     }
 
-    /// Empty array
+    /// Empty the array
     func clear() {
         toConvert.removeAll()
     }
