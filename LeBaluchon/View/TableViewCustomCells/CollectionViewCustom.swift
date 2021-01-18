@@ -1,13 +1,14 @@
 //
-//  collectionViewCustomCell.swift
+//  CollectionViewCustom.swift
 //  LeBaluchon
 //
-//  Created by Elie Arquier on 20/02/2020.
-//  Copyright © 2020 Elie. All rights reserved.
+//  Created by Elie Arquier on 18/01/2021.
+//  Copyright © 2021 Elie. All rights reserved.
 //
 
 import UIKit
 
+// Use for weather detail
 class CollectionViewCustomCell: UICollectionViewCell {
     // MARK: - Outlets and Properties
     @IBOutlet weak var dateLabel: UILabel!

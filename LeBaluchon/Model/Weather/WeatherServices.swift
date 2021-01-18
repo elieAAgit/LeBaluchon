@@ -1,9 +1,9 @@
 //
-//  WeatherIcons.swift
+//  WeatherServices.swift
 //  LeBaluchon
 //
-//  Created by Elie Arquier on 11/02/2020.
-//  Copyright © 2020 Elie. All rights reserved.
+//  Created by Elie Arquier on 18/01/2021.
+//  Copyright © 2021 Elie. All rights reserved.
 //
 
 import Foundation
@@ -33,7 +33,8 @@ extension WeatherService {
 
 extension WeatherService {
     func citiesSearchParameters(search: String) {
-        let searchTreated = search.trimmingCharacters(in: .whitespaces)
+        //let searchTreated = search.trimmingCharacters(in: .whitespaces)
+        let searchTreated = search.replacingOccurrences(of: " ", with: "+")
         ApiKeys.citiesWeatherParameters = "&namePrefix=\(searchTreated)"
     }
 }
